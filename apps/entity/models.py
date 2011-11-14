@@ -11,7 +11,7 @@ class Entity(models.Model):
 	addr2 = models.CharField(max_length=512, null=True, blank=True)
 	phone = models.CharField(max_length=16, null=True, blank=True)
 	year_founded = models.DateField(null=True, blank=True)
-
+	featurable = models.BooleanField(default=False)
 
 
 class Business(Entity):
@@ -37,4 +37,9 @@ class Comment(models.Model):
 	rating = models.BooleanField(default=True)
 	comment = models.TextField()
 	entity = models.ForeignKeyField(Entity)	
+
+class Featured(models.Model):
+	entity = models.ForeignKeyField(Entity)
+	date_featured = models.DateField()
+
 

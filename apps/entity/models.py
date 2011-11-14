@@ -14,9 +14,12 @@ class Entity(models.Model):
 	featurable = models.BooleanField(default=False)
 
 
+class BusinessType(models.Model):
+	name = models.CharField(max_length=128)
+
 class Business(Entity):
 	hours = models.CharField(max_length=1024)
-	
+	business_type = models.ForeignKeyField(BusinessType)
 	
 
 class Church(Entity):

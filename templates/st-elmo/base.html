@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<title>{{ title|default:"St. Elmo" }}</title>
+	
+	<!-- Page Descriptors -->
+	<meta name="keywords" content="Content_Keywords">
+	<meta name="description" content="Content_Description">
+	
+	<!-- Opengraph Data -->
+	<meta property="og:title" content="St. Elmo">
+	<meta property="og:site_name" content="St. Elmo">
+	<meta property="og:image" content="{{ MEDIA_URL }}/img/logo.png">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="OPTIONAL_Content_Image">
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{{ MEDIA_URL }}/img/favicon.ico" type="image/x-icon"> 
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/style.css">
+	<link href="{{ MEDIA_URL }}/fonts/typefaces.css" rel="stylesheet" type="text/css">
+
+	<!-- Javascript-->
+	<script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.js"></script> 
+	<script type="text/javascript" src="{{ MEDIA_URL }}/js/fancybox/jquery.fancybox-1.3.4-pack.js"></script> 
+	<script type="text/javascript" src="{{ MEDIA_URL }}/js/scripts.js"></script> 
+
+</head>
+<body>
+	<div id="PageWrapper" align="center">
+		<div id="PageContainer">
+			<div id="Header">
+				<a href="/login" class="loginLink button right">Log In</a>
+			</div>
+			<div id="Navigation">
+				<ul id="LeftNavigation">
+					<li><a href="/about">About</a></li>
+					<li><a href="/news">News &amp; Events</a></li>
+					<li><a href="/resources">Resources</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+				<ul id="RightNavigation">
+					<li><a href="/businesses">Businesses</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="/churches">Churches</a></li>
+					<li><a href="/organizations">Organizations</a></li>
+				</ul>
+				<a class="Logo" href="/"></a>
+			</div>
+			<div id="Content">
+{% block content %}		
+				<div id="HomeCollage">
+					<div id="PhotoSlot1"><img src="res/img/demo/d1_1_inclined_railway.png" height="340" width="279"></div>
+					<div id="PhotoSlot2"><img src="res/img/demo/d2_1_residence.png" height="224" width="394"></div>
+					<div id="HistoryBox">
+						<div>
+							St. Elmo is situated in the southernmost part of Hamilton County, nestled in the 
+							valley of Lookout Mountain below the curling stretch of the Tennessee River known 
+							as Moccasin Bend. In 1992, St. Elmo was designated a Local Historic District.
+						</div>
+						<a href="content.html" class="more archb">Learn More &gt;</a>
+					</div>
+					<div id="PhotoSlot3"><img src="res/img/demo/d3_1_church.png" height="113" width="394"></div>
+					<div id="NewsletterFrontpage" class="NewsletterForm">
+						<div class="teaser archbi">want to stay in the loop?</div>
+						<div class="calltoaction archb">join the Neighborhood Email List</div>
+						<form action="?" method="post">
+							<input type="text" value="" title="email address" class="email input">
+							<input type="submit" value="Join" class="button submit">
+						</form>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="FeaturedPanel">
+					<div id="FeaturedBusiness" class="standard wide first">
+						<div class="Header">Featured Business<a href="businesses.html" class="more">view all &gt;</a></div>
+						<div class="Content">
+							<div class="Image"><a href="business_detail.html"><img src="res/img/demo/featured_business.png" height="110" width="324"></a></div>
+							<div class="Listing">
+								<a href="business_detail.html" class="Title">Pasha Coffee and Tea</a>
+								<div class="subtitle"><em>All Organic, All Fair Trade</em></div>
+								<div class="details">
+									<div><strong>Type:</strong> Coffeehouse</div>
+									<div><strong>Founded:</strong> in 2007</div>
+								</div>
+								<a href="business_detail.html" class="more">Learn More &gt;</a>
+							</div>
+						</div>
+					</div>
+					<div id="RecentNewsPanel" class="standard wide">
+						<div class="Header">Recent News &amp; Events<a href="news.html" class="more">view all &gt;</a></div>
+						<div class="Content">
+							<div class="Listing">
+								<div class="date">10.13.11</div>
+								<a href="content.html" class="Title">St Elmo Holiday Happenings</a>
+								<div class="details">
+									<strong>When:</strong> Saturday, December 11th, 2011 from 2 to 6 pm
+								</div>
+								<div class="excerpt">
+									Join us for a holiday celebration and tour of St. Elmo's historic homes &amp; churches!
+								</div>
+								<a href="content.html" class="more">Read More &gt;</a>
+							</div>
+							<div class="Listing last">
+								<div class="date">10.11.11</div>
+								<a href="content.html" class="Title">Public Art Project</a>
+								<div class="excerpt">
+									In conjunction with Public Art Chattanooga, the St. Elmo community will soon purchase a sculpture for...
+								</div>
+								<a href="content.html" class="more">Read More &gt;</a>
+							</div>
+						</div>
+					</div>
+					<div id="SocialPanel" class="standard thin last">
+						<div class="Header">Elsewhere</div>
+						<div class="Content">
+							<a href="#" class="socialbutton facebook"></a>
+							<a href="#" class="socialbutton twitter"></a>
+							<a href="#" class="socialbutton flickr"></a>
+							<a href="#" class="socialbutton google"></a>
+							<a href="#" class="socialbutton craigslist"></a>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+{% endblock content %}
+			</div>
+			<div id="Footer">
+				<div class="caption">&copy;2011 Community Association of St Elmo. All Rights Reserved.</div>
+				<div class="links">
+					<a href="content.html">About</a> |
+					<a href="news.html">News &amp; Events</a> |
+					<a href="resources.html">Resources</a> |
+					<a href="contact.html">Contact</a> |
+					<a href="businesses.html">Businesses</a> |
+					<a href="businesses.html">Services</a> |
+					<a href="churches.html">Churches</a> |
+					<a href="organizations.html">Organizations</a>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="hide">
+		<div id="LoginBox">
+			<div class="ModalContent roundtop">
+				<div class="Header">
+					Log in
+					<a href="#" class="Close"></a>
+				</div>
+				<form action="#" method="post">
+					<div class="FieldName">Email Address</div>
+					<div class="FieldInput"><input name="" value="" class="input"></div>
+					<div class="FieldName">Password</div>
+					<div class="FieldInput"><input name="" value="" class="input"></div>
+					<div class="right"><input type="submit" value="Log In" class="button submit"></div>
+				</form>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="ModalContent roundbottom" style="margin-top:2px;">
+				<div class="Notify">Need a St-Elmo.org Account?</div>
+				<div align="center">
+					<a href="#" class="button submit">Register Here</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'Arch';
+	src: url('Arch-Bold.eot');
+	src: url('Arch-Bold.woff') format('woff'), 
+		 url('Arch-Bold.ttf') format('truetype'), 
+		 url('Arch-Bold.svg') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arch';
+	src: url('Arch-BoldItal.eot');
+	src: url('Arch-BoldItal.woff') format('woff'), 
+		 url('Arch-BoldItal.ttf') format('truetype'), 
+		 url('Arch-BoldItal.svg') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'ArchSemibold';
+	src: url('Arch-SembdItal.eot');
+	src: url('Arch-SembdItal.woff') format('woff'), 
+		 url('Arch-SembdItal.ttf') format('truetype'), 
+		 url('Arch-SembdItal.svg') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}
+

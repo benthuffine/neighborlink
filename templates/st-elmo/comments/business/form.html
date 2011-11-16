@@ -1,0 +1,32 @@
+{% load comments %}
+						<div class="CommentCompose Listing">
+							<div class="SubHeader">Add a New Comment</div>
+							<form action="{% comment_form_target %}" method="post">
+								{% csrf_token %}
+								<div class="ComposeCredentials">
+						{% for field in form %}
+							{% if field.is_hidden %}
+								{{ field }}
+							{% else %}
+								{% if field.errors %}{{ field.errors }}{% endif %}
+								{% ifequal field.name "honeypot" %}
+									<div style="display:none;">{{ field.label }}</div>
+									<div style="display:none;">{{ field }}</div>
+								{% endifequal %}
+							{% endif %}
+						{% endfor %}
+									<div class="FieldName">Name *</div>
+									<div class="FieldInput">{{ form.name }}</div>
+									<div class="FieldName">Email *</div>
+									<div class="FieldInput">{{ form.email }}</div>
+									<div class="Notes">* required</div>
+								</div>
+								<div class="ComposeMessage">
+									<div class="FieldName">Message *</div>
+									{{ form.comment }}
+								</div>
+								<div class="clear"></div>
+								<div class="right"><input type="submit" value="Submit Comment" class="button submit"></div>
+								<div class="clear"></div>
+							</form>
+						</div>

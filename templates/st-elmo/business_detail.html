@@ -1,0 +1,71 @@
+{% load comments %}
+{% extends "base.html" %}
+
+{% block content %}
+				<div class="span_content span_wide">
+					<div id="HeroImage"><img src="{{ MEDIA_URL }}/img/demo/hero_diner.png" height="201" width="958"></div> 
+					<div id="PageContent">
+						<h1>Businesses</h1>
+						<div class="Listing ListingDetail">
+							<div class="ListingResources">
+								<div class="image">
+									<img src="{{ MEDIA_URL }}/img/demo/demo_pasha.png" width="324">
+								</div>
+								<div class="context_options">
+									<a href="#" class="context_button directions left"></a>
+									<a href="#" class="context_button website right"></a>
+									<a href="#" class="context_button facebook left"></a>
+									<a href="#" class="context_button twitter right"></a>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="description_block">
+								<h2>{{ business.name }}</h2>
+								<div class="subtitle"><em>{{ business.tagline }}</em></div>
+								<div class="details">
+									<div><strong>Type:</strong> {{ business.business_type }}</div>
+									<div><strong>Founded:</strong> in {{ business.year_founded }}</div>
+									<div><strong>Owners:</strong> {{ business.owners }}</div>
+									<div><strong>Located:</strong> {{ business.readable_location }}</div>
+									<div><strong>Hours:</strong> {{ business.hours }}</div>
+									<div><strong>Features:</strong> {{ business.features }}</div>
+									<div><strong>Address:</strong> {{ business.single_line_address }}</div>
+									<div><strong>Phone:</strong> {{ business.phone }}</div>
+									<div><strong>Email:</strong> <a href="#">{{ business.email }}</a></div>
+								</div>
+								
+								<div class="Copy">
+									{{ business.description|safe }}
+								</div>
+								
+								<div class="details">
+								{% for offer in business.offer_set.all %}
+									<div><strong>{{ offer.name }}:</strong> {{ offer.description|safe }}</div>
+								{% endfor %}
+								</div>
+								
+							</div>
+							<div class="clear"></div>
+						</div>
+
+						{% get_comment_count for business as comment_count %}
+						<div class="Comments Listing">
+							<div class="SubHeader">{{ comment_count }} Comments</div>
+							<div class="CommentThread">
+								{% render_comment_list for business %}
+							</div>
+						</div>
+						
+						{% render_comment_form for business %}
+						
+						<div class="pagination">
+							<a href="{{ prev_business.get_absolute_url }}" class="previous">&lt; previous business</a>
+							<a href="{{ next_business.get_absolute_url }}" class="next">next business &gt;</a>
+							<div class="clear"></div>
+						</div>
+
+					</div>
+				</div>
+
+
+{% endblock content %}

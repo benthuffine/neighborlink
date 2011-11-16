@@ -1,0 +1,9 @@
+{% for comment in comment_list %}
+								<div class="SingleComment">
+									<div class="date">{{ comment.submit_date|date:"n.j.y" }}10.13.11</div>
+									<div class="Title"><strong>{{ comment.user_name }}</strong> says:</div>
+									<div class="Copy">
+										{{ comment.comment }}
+									</div>
+								</div>
+{% endfor %}								

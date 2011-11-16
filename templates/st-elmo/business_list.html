@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+				<div class="span_content span_wide">
+					<div id="HeroImage"><img src="{{ MEDIA_URL }}/img/demo/hero_diner.png" height="201" width="958"></div> 
+					<div id="PageContent">
+						<h1>Businesses</h1>
+					{% for business in businesses %}
+						<div class="Listing">
+							<div class="image">
+								<a href="{{ business.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ business.heroshot.url }}" width="324"></a>
+							</div>
+							<div class="description_block">
+								<h2><a href="{{ business.get_absolute_url }}">{{ business.name }}</a></h2>
+								<div class="subtitle"><em>{{ business.tagline }}</em></div>
+								<div class="details">
+									<div><strong>Type:</strong> {{ business.business_type }}</div>
+									<div><strong>Founded:</strong> in St Elmo in {{ business.year_founded }}</div>
+									<div><strong>Located:</strong> {{ business.readabled_location }}</div>
+									<div><strong>Hours:</strong> {{ business.hours }}</div>
+								</div>
+							</div>
+							<div class="context_options">
+								<a href="{{ business.get_absolute_url }}" class="context_button learn_more"></a>
+								<a href="{{ business.google_maps_url }}" class="context_button directions"></a>
+								<a href="{{ business.website }}" class="context_button website"></a>
+							</div>
+							<div class="clear"></div>
+						</div>
+					{% endfor %}
+				</div>
+{% endblock content %}

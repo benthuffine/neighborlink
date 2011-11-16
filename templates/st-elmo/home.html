@@ -43,7 +43,7 @@
 						<div class="Header">Recent News &amp; Events<a href="/news" class="more">view all &gt;</a></div>
 						<div class="Content">
 							{% for event in recent_events %}
-							<div class="Listing">
+							<div class="Listing {% if forloop.last %}last{% endif %}">
 								<div class="date">{{ event.start_date|date:"n.j.y" }}</div>
 								<a href="{{ event.get_absolute_url }}" class="Title">{{ event.name }}</a>
 								<div class="details">
@@ -51,18 +51,12 @@
 									<strong>When:</strong> {{ event.date_string }}
 								{% endif %}
 								</div>
+								{% if event.teaser %}
 								<div class="excerpt">
-									Join us for a holiday celebration and tour of St. Elmo's historic homes &amp; churches!
+									{{ event.teaser }}
 								</div>
-								<a href="content.html" class="more">Read More &gt;</a>
-							</div>
-							<div class="Listing last">
-								<div class="date">10.11.11</div>
-								<a href="content.html" class="Title">Public Art Project</a>
-								<div class="excerpt">
-									In conjunction with Public Art Chattanooga, the St. Elmo community will soon purchase a sculpture for...
-								</div>
-								<a href="content.html" class="more">Read More &gt;</a>
+								{% endif %}
+								<a href="{{ event.get_absolute_url }}" class="more">Read More &gt;</a>
 							</div>
 							{% endfor %}
 						</div>

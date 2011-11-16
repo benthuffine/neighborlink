@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+				<div class="span_content span_wide">
+					<div id="HeroImage"><img src="{{ MEDIA_URL }}/img/demo/hero_churches.png" height="201" width="958"></div> 
+					<div id="PageContent">
+						<h1>Churches</h1>
+					{% for church in churches %}	
+						<div class="Listing">
+							<div class="image">
+								<a href="{{ church.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ church.heroshot.url }}" width="324"></a>
+							</div>
+							<div class="description_block">
+								<h2><a href="{{ church.get_absolute_url }}">{{ church.name }}</a></h2>
+								<div class="subtitle"><em>{{ church.tagline }}</em></div>
+								<div class="details">
+									<div><strong>Type:</strong> {{ church.denomination }}</div>
+									<div><strong>Founded:</strong> in St Elmo in {{ church.year_founded }}</div>
+									<div><strong>Located:</strong> {{ church.readable_location }}</div>
+									<div><strong>Hours:</strong> {{ church.hours }}</div>
+								</div>
+							</div>
+							<div class="context_options">
+								<a href="{{ church.get_absolute_url }}" class="context_button learn_more"></a>
+								<a href="{{ church.google_maps_url }}" class="context_button directions"></a>
+								<a href="{{ church.website }}" class="context_button website"></a>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+{% endblock content %}

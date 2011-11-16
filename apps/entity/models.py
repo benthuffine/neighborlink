@@ -19,6 +19,7 @@ class Entity(models.Model):
 	featurable = models.BooleanField(default=False)
 	readable_location = models.CharField(max_length=2046, null=True, blank=True)
 	owners = models.ManyToManyField(User)
+	heroshot = models.ImageField(upload_to='heros', null=True, blank=True)
 
 	def get_address(self, single_line=True):
 		joiner = single_line and ' ' else '<br>'
@@ -48,18 +49,30 @@ class Entity(models.Model):
 		return self.get_address(single_line=False)
 	multi_line_address = property(get_multi_line_address)
 
-		
+	def get_google_maps_url(self):
+		return 'http://maps.google.com/maps?q= %s' % self.get_address()
+	google_maps_url = property(get_google_maps_url)
 
 class BusinessType(models.Model):
 	name = models.CharField(max_length=128)
+
+	def __unicode__(self):
+		return self.name
 
 class Business(Entity):
 	hours = models.CharField(max_length=1024)
 	business_type = models.ForeignKeyField(BusinessType)
 	features = models.CharField(max_length=1024)
 
+class Denomination(models.Model):
+	name = models.CharField(max_length=1024)
+
+	def __unicode__(self):
+		return self.name
+
 class Church(Entity):
-	pass
+	hours = models.CharField(max_length=1024)
+	denomination = models.ForeignKeyField(Denomination)
 
 class Organization(Entity):
 	pass

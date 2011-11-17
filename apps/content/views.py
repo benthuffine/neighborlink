@@ -6,9 +6,9 @@ from django.http import HttpResponseRedirect
 from neighborlink.apps.content.models import *
 
 def home(request):
-	contentpage = get_object_or_404(Page, slug__exact='home')
+    contentpage = get_object_or_404(Page, slug__exact='home')
 
-	context = RequestContext(request, {
+    context = RequestContext(request, {
         'contentpage': contentpage,
     })
     

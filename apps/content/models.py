@@ -7,5 +7,5 @@ class Image(models.Model):
     sort_order = models.PositiveIntegerField(null=True, blank=True)
 
 class Page(models.Model):
-	heroshots = models.ManyToManyField(Image, null=True)
-	content = models.TextField(null=True, blank=True)
+    heroshots = models.ManyToManyField(Image, null=True)
+    content = models.TextField(null=True, blank=True)

@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	(r'^admin/', include(admin.site.urls)),
+	(r'^$', 'neighborlink.apps.content.views.home'),
 )

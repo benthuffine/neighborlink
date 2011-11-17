@@ -61,7 +61,7 @@ class BusinessType(models.Model):
 
 class Business(Entity):
 	hours = models.CharField(max_length=1024)
-	business_type = models.ForeignKeyField(BusinessType)
+	business_type = models.ForeignKey(BusinessType)
 	features = models.CharField(max_length=1024)
 
 class Denomination(models.Model):
@@ -72,7 +72,7 @@ class Denomination(models.Model):
 
 class Church(Entity):
 	hours = models.CharField(max_length=1024)
-	denomination = models.ForeignKeyField(Denomination)
+	denomination = models.ForeignKey(Denomination)
 
 class Organization(Entity):
 	pass
@@ -83,16 +83,16 @@ class Offer(models.Model):
 	start_date = models.DateField(null=True, blank=True)
 	end_date = models.DateField(null=True, blank=True)
 	description = models.TextField()
-	models.ForeignKeyField(Business)	
+	models.ForeignKey(Business)	
 
 class Comment(models.Model):
 	insert_date = models.DateField(auto_now_add=True)
 	rating = models.BooleanField(default=True)
 	comment = models.TextField()
-	entity = models.ForeignKeyField(Entity)	
+	entity = models.ForeignKey(Entity)	
 
 class Featured(models.Model):
-	entity = models.ForeignKeyField(Entity)
+	entity = models.ForeignKey(Entity)
 	date_featured = models.DateField()
 
 

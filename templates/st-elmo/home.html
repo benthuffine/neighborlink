@@ -2,17 +2,15 @@
 
 {% block content %}
 				<div id="HomeCollage">
-					<div id="PhotoSlot1"><img src="{{ MEDIA_URL }}/img/demo/d1_1_inclined_railway.png" height="340" width="279"></div>
-					<div id="PhotoSlot2"><img src="{{ MEDIA_URL }}/img/demo/d2_1_residence.png" height="224" width="394"></div>
+					<div id="PhotoSlot1"><img src="{{ MEDIA_URL }}{{ contentpage.heroshots.0.url }}" height="340" width="279"></div>
+					<div id="PhotoSlot2"><img src="{{ MEDIA_URL }}{{ contentpage.heroshots.1.url }}" height="224" width="394"></div>
 					<div id="HistoryBox">
 						<div>
-							St. Elmo is situated in the southernmost part of Hamilton County, nestled in the 
-							valley of Lookout Mountain below the curling stretch of the Tennessee River known 
-							as Moccasin Bend. In 1992, St. Elmo was designated a Local Historic District.
+							{{ contentpage.content|safe }}
 						</div>
 						<a href="/about" class="more archb">Learn More &gt;</a>
 					</div>
-					<div id="PhotoSlot3"><img src="{{ MEDIA_URL }}/img/demo/d3_1_church.png" height="113" width="394"></div>
+					<div id="PhotoSlot3"><img src="{{ MEDIA_URL }}{{ contentpage.heroshots.2.url }}" height="113" width="394"></div>
 					<div id="NewsletterFrontpage" class="NewsletterForm">
 						<div class="teaser archbi">want to stay in the loop?</div>
 						<div class="calltoaction archb">join the Neighborhood Email List</div>

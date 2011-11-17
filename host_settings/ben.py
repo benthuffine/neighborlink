@@ -1,4 +1,4 @@
-from host_settings.common import *
+from host_settings.st-elmo import *
 
 DEBUG = True
 

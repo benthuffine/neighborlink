@@ -22,7 +22,7 @@ class Entity(models.Model):
 	heroshot = models.ImageField(upload_to='heros', null=True, blank=True)
 
 	def get_address(self, single_line=True):
-		joiner = single_line and ' ' else '<br>'
+		joiner = single_line and ' ' or '<br>'
 		
 		addr = [self.addr1,]
 		if self.addr2:

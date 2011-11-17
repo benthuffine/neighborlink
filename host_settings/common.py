@@ -119,9 +119,13 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'neighborlink.grappelli',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'neighborlink.apps.account',
+    'neighborlink.apps.content',
+    'neighborlink.apps.entity',
+    'neighborlink.apps.event',
 )
 
 # A sample logging configuration. The only tangible logging

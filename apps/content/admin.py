@@ -9,4 +9,4 @@ class PageAdmin(admin.ModelAdmin):
 	inlines = [
 		HeroshotInline,
 	]
-admin.site.register(Page)
+admin.site.register(Page, PageAdmin)

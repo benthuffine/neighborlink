@@ -1,16 +1,16 @@
-{% extends "st-elmo/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 				<div id="HomeCollage">
-					<div id="PhotoSlot1"><img src="{{ MEDIA_URL }}{{ contentpage.heroshots.0.url }}" height="340" width="279"></div>
-					<div id="PhotoSlot2"><img src="{{ MEDIA_URL }}{{ contentpage.heroshots.1.url }}" height="224" width="394"></div>
+					<div id="PhotoSlot1"><img src="{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image }}" height="340" width="279"></div>
+					<div id="PhotoSlot2"><img src="{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.1.image }}" height="224" width="394"></div>
 					<div id="HistoryBox">
 						<div>
 							{{ contentpage.content|safe }}
 						</div>
 						<a href="/about" class="more archb">Learn More &gt;</a>
 					</div>
-					<div id="PhotoSlot3"><img src="{{ MEDIA_URL }}{{ contentpage.heroshots.2.url }}" height="113" width="394"></div>
+					<div id="PhotoSlot3"><img src="{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.2.image }}" height="113" width="394"></div>
 					<div id="NewsletterFrontpage" class="NewsletterForm">
 						<div class="teaser archbi">want to stay in the loop?</div>
 						<div class="calltoaction archb">join the Neighborhood Email List</div>

@@ -9,7 +9,7 @@ class Page(models.Model):
 
 class Heroshot(models.Model):
     image = models.ImageField(upload_to='ext/heroshots')
-    description = models.CharField(max_length=255, blank=True, model=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=255,blank=True)
     sort_order = models.PositiveIntegerField(null=True, blank=True)
     page = models.ForeignKey(Page)        

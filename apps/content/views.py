@@ -2,14 +2,17 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import HttpResponseRedirect
+from datetime import datetime
 
 from neighborlink.apps.content.models import *
 
 def home(request):
     contentpage = get_object_or_404(Page, slug__exact='home')
+    recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now()).order_by('-start_date', '-event_start_date')[2]
 
     context = RequestContext(request, {
         'contentpage': contentpage,
+        'recent_events': recent_events,
     })
     
     return render_to_response('home.html', context)

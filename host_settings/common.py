@@ -102,6 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'neighborlink.urls'
@@ -119,13 +120,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages',
     'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'neighborlink.apps.account',
     'neighborlink.apps.content',
     'neighborlink.apps.entity',
-    'neighborlink.apps.event',
+#    'neighborlink.apps.event',
 )
 
 # A sample logging configuration. The only tangible logging

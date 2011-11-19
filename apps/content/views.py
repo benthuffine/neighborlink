@@ -13,3 +13,29 @@ def home(request):
     })
     
     return render_to_response('home.html', context)
+
+def newsevents(request):
+    contentpage = get_object_or_404(Page, slug__exact='newsevents')
+    events_list = NewsEvent.objects.order_by('-start_date', '-event_start_date')
+
+    paginator = Paginator(events_list, 5)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        events = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        events = paginator.page(paginator.num_pages)
+
+    context = RequestContext(request, {
+        'contentpage': contentpage,
+        'page': page,
+        'events': events
+    })
+
+    return render_to_response('newsevent_list.html')
+
+  

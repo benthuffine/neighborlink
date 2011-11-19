@@ -20,7 +20,7 @@ class Heroshot(models.Model):
         ordering = ['sort_order',]
 
 class Article(Page):
-    insert_date = models.DateField(null=True, auto_add_now=True)
+    insert_date = models.DateField(null=True, auto_now_add=True)
     teaser = models.CharField(max_length=1024, null=True, blank=True)
 
 class NewsEvent(Page):

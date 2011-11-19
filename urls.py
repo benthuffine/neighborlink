@@ -20,5 +20,6 @@ if settings.DEBUG:
   )
 
 urlpatterns += patterns('neighborlink.apps.content.views',
+    (r'^news/$', 'newsevents'),
     (r'^$', 'home'),
 )

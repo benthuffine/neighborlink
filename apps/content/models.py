@@ -33,7 +33,7 @@ class NewsEvent(Page):
     def save(self, *args, **kwargs):
         if not self.start_date:
             self.start_date = datetime.now()
-        super(Event, self).save(*args, **kwargs)
+        super(NewsEvent, self).save(*args, **kwargs)
 
     def get_date_string(self):
         #   Saturday, December 11th, 2011 from 2 to 6 pm

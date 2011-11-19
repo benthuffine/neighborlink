@@ -26,8 +26,8 @@ class Article(Page):
 class NewsEvent(Page):
     start_date = models.DateField(null=True, verbose_name='Date to start display')
     end_date = models.DateField(null=True, verbose_name='Date to end display')
-    event_start_date = models.DateTimeField(null=True)
-    event_end_date = models.DateTimeField(null=True)
+    event_start_date = models.DateTimeField(null=True, blank=True)
+    event_end_date = models.DateTimeField(null=True, blank=True)
     teaser = models.CharField(max_length=1024, null=True, blank=True)
     
     def save(self, *args, **kwargs):
@@ -43,7 +43,7 @@ class NewsEvent(Page):
             return ''
 
         ds = start_date.day
-        if ds%10 == 1:
+        if ds%10 == 1 and ds != 11:
             ds = "%dst" % ds
         elif ds%10 == 2:
             ds = "%dnd" % ds
@@ -56,11 +56,11 @@ class NewsEvent(Page):
             #  Same day
             ds = start_date.strftime('%A, %B') + (" %s " % ds) + start_date.strftime('%Y') + " from"
             if start_date.strftime('%p') == end_date.strftime('%p'):
-                ds = "%s %d to %d %s" % (ds, start_date.strftime('%I'), end_date.strftime('%I'), start_date.strftime('%p'))
+                ds = "%s %d to %d %s" % (ds, int(start_date.strftime('%I')), int(end_date.strftime('%I')), start_date.strftime('%p'))
             else:
-                ds = "%s %d %s to %d %s" % (ds, start_date.strftime('%I'), start_date.strftime('%p'), end_date.strftime('%I'), end_date.strftime('%p'))
+                ds = "%s %d %s to %d %s" % (ds, int(start_date.strftime('%I')), int(start_date.strftime('%p')), end_date.strftime('%I'), end_date.strftime('%p'))
         else:
             ds = start_date.strftime('%A, %B') + " until " + end_date.strftime('%A, %B')
         return ds
         
-    date_string = property(get_date_string)        
+    date_string = property(get_date_string)     

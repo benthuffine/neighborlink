@@ -8,7 +8,7 @@ from neighborlink.apps.content.models import *
 
 def home(request):
     contentpage = get_object_or_404(Page, slug__exact='home')
-    recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now()).order_by('-start_date', '-event_start_date')[:2]
+    recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now()).order_by('start_date', 'event_start_date')[:2]
 
     context = RequestContext(request, {
         'contentpage': contentpage,
@@ -18,8 +18,8 @@ def home(request):
     return render_to_response('home.html', context)
 
 def newsevents(request):
-    contentpage = get_object_or_404(Page, slug__exact='newsevents')
-    events_list = NewsEvent.objects.order_by('-start_date', '-event_start_date')
+    contentpage = get_object_or_404(Page, slug__exact='news-and-events')
+    events_list = NewsEvent.objects.order_by('start_date', 'event_start_date')
 
     paginator = Paginator(events_list, 5)
 

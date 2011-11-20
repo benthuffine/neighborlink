@@ -36,7 +36,8 @@ def newsevents(request):
     context = RequestContext(request, {
         'contentpage': contentpage,
         'page': page,
-        'events': events
+        'events': events,
+        'recent_events': events_list[:10],
     })
 
     return render_to_response('newsevent_list.html', context)

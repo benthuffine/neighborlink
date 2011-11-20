@@ -1,13 +1,19 @@
 from django.db import models
 from datetime import datetime
 
-class Page(models.Model):
+class PageInfo(models.Model):
     title = models.CharField(max_length=256)
     slug = models.SlugField(max_length=255)
     content = models.TextField(null=True, blank=True)
 
+    class Meta:
+        abstract = True
+
+class Page(PageInfo):
+    pass
+
     def __unicode__(self):
-        return self.slug
+        return self.title
 
 class Heroshot(models.Model):
     image = models.ImageField(upload_to='ext/heroshots')
@@ -19,11 +25,11 @@ class Heroshot(models.Model):
     class Meta:
         ordering = ['sort_order',]
 
-class Article(Page):
+class Article(PageInfo):
     insert_date = models.DateField(null=True, auto_now_add=True)
     teaser = models.CharField(max_length=1024, null=True, blank=True)
 
-class NewsEvent(Page):
+class NewsEvent(PageInfo):
     start_date = models.DateField(null=True, verbose_name='Date to start display')
     end_date = models.DateField(null=True, verbose_name='Date to end display')
     event_start_date = models.DateTimeField(null=True, blank=True)

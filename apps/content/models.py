@@ -20,7 +20,7 @@ class Heroshot(models.Model):
     description = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=255,blank=True)
     sort_order = models.PositiveIntegerField(null=True, blank=True)
-    page = models.ForeignKey(Page)   
+    page = models.ForeignKey(PageInfo)   
     
     class Meta:
         ordering = ['sort_order',]

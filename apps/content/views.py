@@ -39,6 +39,6 @@ def newsevents(request):
         'events': events
     })
 
-    return render_to_response('newsevent_list.html')
+    return render_to_response('newsevent_list.html', context)
 
   

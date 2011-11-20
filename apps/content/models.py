@@ -6,14 +6,11 @@ class PageInfo(models.Model):
     slug = models.SlugField(max_length=255)
     content = models.TextField(null=True, blank=True)
 
-    class Meta:
-        abstract = True
-
-class Page(PageInfo):
-    pass
-
     def __unicode__(self):
         return self.title
+
+class Page(PageInfo):
+    pass    
 
 class Heroshot(models.Model):
     image = models.ImageField(upload_to='ext/heroshots')
@@ -26,6 +23,9 @@ class Heroshot(models.Model):
         ordering = ['sort_order',]
 
 class Article(PageInfo):
+    title = models.CharField(max_length=256)
+    slug = models.SlugField(max_length=255)
+    content = models.TextField(null=True, blank=True)
     insert_date = models.DateField(null=True, auto_now_add=True)
     teaser = models.CharField(max_length=1024, null=True, blank=True)
 

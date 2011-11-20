@@ -26,7 +26,7 @@ urlpatterns += patterns('neighborlink.apps.content.views',
 )
 
 from neighborlink.apps.content.feeds import *
-urlpatters += patterns('',
+urlpatterns += patterns('',
     (r'^news-and-events/feed/$', LatestNewsEventsFeed()),
     (r'^about/feed/$', LatestAboutPageFeed()),
 )

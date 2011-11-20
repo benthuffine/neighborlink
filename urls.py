@@ -20,6 +20,13 @@ if settings.DEBUG:
   )
 
 urlpatterns += patterns('neighborlink.apps.content.views',
-    (r'^news/$', 'newsevents'),
+    (r'^news-and-events/(?P<slug>[\w-]+)/$', 'newsevent'),
+    (r'^news-and-events/$', 'newsevents'),
     (r'^$', 'home'),
+)
+
+from neighborlink.apps.content.feeds import *
+urlpatters += patterns('',
+    (r'^news-and-events/feed/$', LatestNewsEventsFeed()),
+    (r'^about/feed/$', LatestAboutPageFeed()),
 )

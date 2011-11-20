@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 
 class PageInfo(models.Model):
+    insert_date = models.DateField(null=True, auto_now_add=True, editable=False)
     title = models.CharField(max_length=256)
     slug = models.SlugField(max_length=255)
     content = models.TextField(null=True, blank=True)
@@ -22,9 +23,12 @@ class Heroshot(models.Model):
     class Meta:
         ordering = ['sort_order',]
 
-class Article(PageInfo):
-    insert_date = models.DateField(null=True, auto_now_add=True)
+class AboutPage(PageInfo):
+    
     teaser = models.CharField(max_length=1024, null=True, blank=True)
+
+    def get_absolute_url(self):
+        return 
 
 class NewsEvent(PageInfo):
     start_date = models.DateField(null=True, verbose_name='Date to start display')
@@ -37,6 +41,9 @@ class NewsEvent(PageInfo):
         if not self.start_date:
             self.start_date = datetime.now()
         super(NewsEvent, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return '/news-and-events/%s' % self.slug
 
     def get_date_string(self):
         #   Saturday, December 11th, 2011 from 2 to 6 pm
@@ -55,6 +62,7 @@ class NewsEvent(PageInfo):
         else:
             ds = "%dth" % ds
         
+        #   TO-DO: Deal with half hours
         if start_date.year == end_date.year and start_date.month == end_date.month and start_date.day == end_date.day:
             #  Same day
             ds = start_date.strftime('%A, %B') + (" %s " % ds) + start_date.strftime('%Y') + " from"
@@ -66,4 +74,6 @@ class NewsEvent(PageInfo):
             ds = start_date.strftime('%A, %B') + " until " + end_date.strftime('%A, %B')
         return ds
         
-    date_string = property(get_date_string)     
+    date_string = property(get_date_string)    
+    
+from django.contrib.syndication.views import Feed    

@@ -42,4 +42,17 @@ def newsevents(request):
 
     return render_to_response('newsevent_list.html', context)
 
+def newsevent(request, slug):
+    event = get_object_or_404(NewsEvent, slug__exact=slug)
+    recent_entries = NewsEvent.objects.order_by('start_date', 'event_start_date')[:6]
+
+    context = RequestContext(request, {
+        'article': event,
+        'recent_entries': recent_entries,
+        'slute': 'news-and-events',
+    })
+
+    return render_to_response('page.html', context)
+        
+
   

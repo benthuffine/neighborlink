@@ -41,9 +41,9 @@
 						<div class="Header">Recent News &amp; Events<a href="/news" class="more">view all &gt;</a></div>
 						<div class="Content">
 							{% for event in recent_events %}
-							<div class="Listing {% if forloop.last %}last{% endif %}">
-								<div class="date">{{ event.start_date|date:"n.j.y" }}</div>
-								<a href="{{ event.get_absolute_url }}" class="Title">{{ event.name }}</a>
+							<div class="Listing {% ifequal forloop.counter 2 %}last{% endifequal %}">
+								{% if event.event_start_date %}<div class="date">{{ event.event_start_date|date:"n.j.y" }}</div>{% endif %}
+								<a href="{{ event.get_absolute_url }}" class="Title">{{ event.title }}</a>
 								<div class="details">
 								{% if event.event_start_date %}
 									<strong>When:</strong> {{ event.date_string }}

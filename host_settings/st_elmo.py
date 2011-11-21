@@ -7,3 +7,5 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     join(join(PROJECT_DIR, 'templates'), 'st-elmo'),
 )
+
+SITE_NAME = 'St. Elmo'

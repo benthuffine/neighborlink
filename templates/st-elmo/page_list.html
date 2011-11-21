@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+				<div class="span_content span_thin">
+					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image|default:"res/img/demo/hero_working.png" }}' height="201" width="674"></div>
+					<div id="PageContent">
+						<h1>News &amp; Events</h1>
+  					{% for item in items.object_list %}
+						<div class="Listing">
+						{% if item.event_start_date %}
+							<div class="date">{{ item.event_start_date|date:"n.j.y" }}</div>
+						{% endif %}
+							<h2><a href="{{ item.get_absolute_url }}">{{ item.title|upper }}</a></h2>
+						{% if item.date_string %}
+							<div class="details">
+								<div><strong>When:</strong> {{ item.date_string }}</div>
+							</div>
+						{% endif %}
+							<div class="Copy">
+						{% if item.teaster %}
+								<p>{{ item.teaser }}</p>
+						{% else %}
+								<p>{{ item.content|striptags|truncatewords:15 }}
+						{% endif %}
+							</div>
+							<a href="{{ item.get_absolute_url }}" class="more">Read More &gt;</a>
+						</div>
+					{% endfor %}
+						<div class="pagination">
+			  			{% if items.has_previous %}
+							<a href="?page={{ items.previous_page_number }}" class="previous">&lt; older entries</a>
+						{% endif %}
+						{% if items.has_next %}
+							<a href="?page={{ items.next_page_number }}" class="next">newer entries &gt;</a>
+						{% endif %}
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div id="SideNavigation">
+					<div class="Widget LinkList">
+						<div class="Header">Recent Entries<a href="/news-and-events/feed/" class="more rss"></a></div>
+						<div class="Links">
+						{% for event in recent_items %}
+							<a href="{{ item.get_absolute_url }}">{{ item.title|upper }}</a>
+						{% endfor %}
+						</div>
+					</div>
+					
+					<div class="Widget NewsletterForm">
+						<div class="teaser archbi">want to stay in the loop?</div>
+						<div class="calltoaction archb">join the Neighborhood Email List</div>
+						<form action="/join" method="post">
+							<input type="text" value="" title="email address" class="email input">
+							<input type="submit" value="Join" class="button submit">
+						</form>
+					</div>
+				</div>						
+{% endblock content %}

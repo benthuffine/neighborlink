@@ -129,16 +129,16 @@
 {% endblock content %}
 			</div>
 			<div id="Footer">
-				<div class="caption">&copy;2011 Community Association of St Elmo. All Rights Reserved.</div>
+				<div class="caption">&copy;{% now "Y" %} Community Association of St Elmo. All Rights Reserved.</div>
 				<div class="links">
-					<a href="content.html">About</a> |
-					<a href="news.html">News &amp; Events</a> |
-					<a href="resources.html">Resources</a> |
-					<a href="contact.html">Contact</a> |
-					<a href="businesses.html">Businesses</a> |
-					<a href="businesses.html">Services</a> |
-					<a href="churches.html">Churches</a> |
-					<a href="organizations.html">Organizations</a>
+					<a href="/about">About</a> |
+					<a href="/news">News &amp; Events</a> |
+					<a href="/resources">Resources</a> |
+					<a href="/contact">Contact</a> |
+					<a href="/businesses">Businesses</a> |
+					<a href="/services">Services</a> |
+					<a href="/churches">Churches</a> |
+					<a href="/organizations">Organizations</a>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -152,7 +152,7 @@
 					Log in
 					<a href="#" class="Close"></a>
 				</div>
-				<form action="#" method="post">
+				<form action="/login" method="post">
 					<div class="FieldName">Email Address</div>
 					<div class="FieldInput"><input name="" value="" class="input"></div>
 					<div class="FieldName">Password</div>

@@ -39,7 +39,7 @@ def page_list(request, contentpage, items_list, slug):
         'slug': slug,
     })
 
-def page_detail(item, recent_entries, slug):
+def page_detail(request, item, recent_entries, slug):
     return RequestContext(request, {
         'item': item,
         'recent_entries': recent_entries,
@@ -62,7 +62,7 @@ def newsevent_detail(request, slug):
 
     recent_entries = NewsEvent.objects.order_by('start_date', 'event_start_date')[:6]
 
-    context = page_detail(event, recent_entries, 'news-and-events')
+    context = page_detail(request, event, recent_entries, 'news-and-events')
 
     return render_to_response('newsevent_detail.html', context)
 
@@ -79,7 +79,7 @@ def about_detail(request, slug):
     about = get_object_or_404(AboutPage, slug__exact=slug)
     recent_entries = AboutPage.objects.order_by('-insert_date')[:6]
 
-    context = page_detail(about, recent_entries, 'about')
+    context = page_detail(request, about, recent_entries, 'about')
 
     return render_to_response('about_detail.html', context)   
 
@@ -96,6 +96,6 @@ def resource_detail(request, slug):
     resource = get_object_or_404(ResourcePage, slug__exact=slug)
     recent_entries = ResourcePage.objects.order_by('-insert_date')[:6]
 
-    context = page_detail(resource, recent_entries, 'resources')
+    context = page_detail(request, resource, recent_entries, 'resources')
 
     return render_to_response('resource_detail.html', context)

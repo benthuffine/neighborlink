@@ -20,4 +20,6 @@ class PageAdmin(admin.ModelAdmin):
         
 admin.site.register(Page, PageAdmin)
 admin.site.register(NewsEvent, PageAdmin)
+admin.site.register(AboutPage, PageAdmin)
+admin.site.register(ResourcePage, PageAdmin)
 

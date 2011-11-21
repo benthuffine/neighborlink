@@ -27,9 +27,9 @@ def page_list(request, contentpage, items_list, slug):
         page = 1
 
     try:
-        events = paginator.page(page)
+        items = paginator.page(page)
     except (EmptyPage, InvalidPage):
-        events = paginator.page(paginator.num_pages)
+        items = paginator.page(paginator.num_pages)
 
     return RequestContext(request, {
         'contentpage': contentpage,

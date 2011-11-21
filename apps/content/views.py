@@ -18,7 +18,7 @@ def home(request):
     
     return render_to_response('home.html', context)
 
-def page_list(contentpage, items_list, slug):
+def page_list(request, contentpage, items_list, slug):
     paginator = Paginator(items_list, 5)
 
     try:
@@ -51,7 +51,7 @@ def newsevent_list(request):
     contentpage = get_object_or_404(Page, slug__exact=slug)
     events_list = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now()).order_by('start_date', 'event_start_date')
 
-    context = page_list(contentpage, events_list, slug)
+    context = page_list(request, contentpage, events_list, slug)
 
     return render_to_response('page_list.html', context)
 
@@ -71,7 +71,7 @@ def about_list(request):
     contentpage = get_object_or_404(Page, slug__exact=slug)
     about_list = AboutPage.objects.order_by('-insert_date')
 
-    context = page_list(contentpage, about_list, slug)
+    context = page_list(request, contentpage, about_list, slug)
 
     return render_to_response('page_list.html', context)
 
@@ -92,7 +92,7 @@ def resource_list(request):
     contentpage = get_object_or_404(Page, slug__exact=slug)
     resource_list = ResourcePage.objects.order_by('-insert_date')
 
-    context = page_list(contentpage, resource_list, slug)
+    context = page_list(request, contentpage, resource_list, slug)
 
     return render_to_response('page_list.html', context)
 

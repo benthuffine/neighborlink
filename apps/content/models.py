@@ -5,6 +5,7 @@ class PageInfo(models.Model):
     insert_date = models.DateField(null=True, auto_now_add=True, editable=False)
     title = models.CharField(max_length=256)
     slug = models.SlugField(max_length=255)
+    teaser = models.CharField(max_length=1024, null=True, blank=True)
     content = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
@@ -24,18 +25,22 @@ class Heroshot(models.Model):
         ordering = ['sort_order',]
 
 class AboutPage(PageInfo):
-    
-    teaser = models.CharField(max_length=1024, null=True, blank=True)
+    pass
 
     def get_absolute_url(self):
-        return 
+        return '/about/%s' % self.slug
+
+class ResourcePage(PageInfo):
+    pass
+
+    def get_absolute_url(self):
+        return '/resources/%s' % self.slug
 
 class NewsEvent(PageInfo):
     start_date = models.DateField(null=True, verbose_name='Date to start display')
     end_date = models.DateField(null=True, verbose_name='Date to end display')
     event_start_date = models.DateTimeField(null=True, blank=True)
     event_end_date = models.DateTimeField(null=True, blank=True)
-    teaser = models.CharField(max_length=1024, null=True, blank=True)
     
     def save(self, *args, **kwargs):
         if not self.start_date:

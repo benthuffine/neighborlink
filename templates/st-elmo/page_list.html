@@ -4,7 +4,7 @@
 				<div class="span_content span_thin">
 					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image|default:"res/img/demo/hero_working.png" }}' height="201" width="674"></div>
 					<div id="PageContent">
-						<h1>News &amp; Events</h1>
+						<h1>{% block title %}List Title{% endblock title %}</h1>
   					{% for item in items.object_list %}
 						<div class="Listing">
 						{% if item.event_start_date %}
@@ -39,9 +39,9 @@
 				</div>
 				<div id="SideNavigation">
 					<div class="Widget LinkList">
-						<div class="Header">Recent Entries<a href="/news-and-events/feed/" class="more rss"></a></div>
+						<div class="Header">Recent Entries<a href="/{{ slug }}/feed/" class="more rss"></a></div>
 						<div class="Links">
-						{% for event in recent_items %}
+						{% for item in recent_items %}
 							<a href="{{ item.get_absolute_url }}">{{ item.title|upper }}</a>
 						{% endfor %}
 						</div>

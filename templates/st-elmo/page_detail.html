@@ -2,11 +2,11 @@
 
 {% block content %}
 				<div class="span_content span_thin">
-					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ article.heroshot_set.all.0.image|default:"/img/demo/hero_house.png" }}' height="201" width="674"></div>
+					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ item.heroshot_set.all.0.image|default:"/img/demo/hero_house.png" }}' height="201" width="674"></div>
 					<div id="PageContent">
-						<h1>{{ article.title|upper }}</h1>
+						<h1>{{ item.title|upper }}</h1>
 						<div class="Copy">
-							{{ article.content|safe }}
+							{{ item.content|safe }}
 						</div>
 					</div>
 				</div>

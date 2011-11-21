@@ -73,7 +73,7 @@ def about_list(request):
 
     context = page_list(request, contentpage, about_list, slug)
 
-    return render_to_response('about_list.html', context, context_instance=context)
+    return render_to_response('about_list.html', {}, context_instance=context)
 
 def about_detail(request, slug):
     about = get_object_or_404(AboutPage, slug__exact=slug)

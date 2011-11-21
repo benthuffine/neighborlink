@@ -35,7 +35,7 @@ def page_list(request, contentpage, items_list, slug):
         'contentpage': contentpage,
         'page': page,
         'items': items,
-        'recent_items': events_list[:10],
+        'recent_items': items_list[:10],
         'slug': slug
     })
 

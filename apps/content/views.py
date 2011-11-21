@@ -57,8 +57,8 @@ def newsevent_list(request):
 
 def newsevent_detail(request, slug):
     event = get_object_or_404(NewsEvent, slug__exact=slug)
-    if event.start_date <= datetime.now().date() or event.start_date >= datetime.now().date():
-        return Http404('Page Not Found')
+    if event.start_date >= datetime.now().date() or event.end_date <= datetime.now().date():
+        raise Http404('Page Not Found')
 
     recent_entries = NewsEvent.objects.order_by('start_date', 'event_start_date')[:6]
 

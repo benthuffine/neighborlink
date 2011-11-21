@@ -28,13 +28,13 @@ class AboutPage(PageInfo):
     pass
 
     def get_absolute_url(self):
-        return '/about/%s' % self.slug
+        return '/about/%s/' % self.slug
 
 class ResourcePage(PageInfo):
     pass
 
     def get_absolute_url(self):
-        return '/resources/%s' % self.slug
+        return '/resources/%s/' % self.slug
 
 class NewsEvent(PageInfo):
     start_date = models.DateField(null=True, verbose_name='Date to start display')
@@ -48,7 +48,7 @@ class NewsEvent(PageInfo):
         super(NewsEvent, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return '/news-and-events/%s' % self.slug
+        return '/news-and-events/%s/' % self.slug
 
     def get_date_string(self):
         #   Saturday, December 11th, 2011 from 2 to 6 pm

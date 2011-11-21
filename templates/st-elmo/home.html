@@ -49,9 +49,12 @@
 									<strong>When:</strong> {{ event.date_string }}
 								{% endif %}
 								</div>
-								{% if event.teaser %}
 								<div class="excerpt">
+								{% if event.teaser %}
 									{{ event.teaser }}
+								{% else %}
+									{{ event.content|striptags|truncatewords:15 }}
+								{% endif %}
 								</div>
 								{% endif %}
 								<a href="{{ event.get_absolute_url }}" class="more">Read More &gt;</a>

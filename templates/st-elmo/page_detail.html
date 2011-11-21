@@ -15,7 +15,17 @@
 						<div class="Header">Recent Entries<a href="{{ slug }}/feed/" class="more rss"></a></div>
 						<div class="Links">
 						{% for entry in recent_entries %}
-							<a href="{{ entry.get_absolute_url }}"{% ifequal entry.get_absolute_url request.get_full_path %} class="selected"{% endifequal %}>{{ entry.title }}<br><span>{{ entry.teaser }}</span></a>
+							<a href="{{ entry.get_absolute_url }}"{% ifequal entry.get_absolute_url request.get_full_path %} class="selected"{% endifequal %}>
+								{{ entry.title }}<br>
+								<span>
+								{% if entry.teaser %}
+									{{ entry.teaser }}
+								{% else %}
+									{{ entry.content|striptags|truncatewords:15 }}
+								{% endif %}
+								</span>
+
+							</a>
 						{% endfor %}
 						</div>
 					</div>

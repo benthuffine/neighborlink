@@ -25,6 +25,11 @@ urlpatterns += patterns('',
     (r'^about/feed/$', LatestAboutPageFeed()),
 )
 
+urlpatterns += patterms('neightborlink.apps.entity.views',
+    (r'^businesses/$', 'business_list'),
+    (r'^businesses/(?P<slug>[\w-]+)/$', 'business_detail'),
+)
+
 urlpatterns += patterns('neighborlink.apps.content.views',
     (r'^news-and-events/(?P<slug>[\w-]+)/$', 'newsevent_detail'),
     (r'^news-and-events/$', 'newsevent_list'),
@@ -32,9 +37,6 @@ urlpatterns += patterns('neighborlink.apps.content.views',
     (r'^about/$', 'about_list'),
     (r'^resources/(?P<slug>[\w-]+)/$', 'resource_detail'),
     (r'^resources/$', 'resource_list'),
-
-    (r'^businesses/$', 'business_list'),
-    (r'^businesses/(?P<slug>[\w-]+)/$', 'business_detail'),
 
     (r'^$', 'home'),
 )

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class Entity(models.Model):
     name = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=255)
     tagline = models.CharField(max_length=1024, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     website = models.URLField(verify_exists=True, null=True, blank=True)
@@ -52,6 +53,9 @@ class Entity(models.Model):
     def get_google_maps_url(self):
         return 'http://maps.google.com/maps?q= %s' % self.get_address()
     google_maps_url = property(get_google_maps_url)
+
+    def get_absolute_url(self):
+        return '/businesses/%s/' % self.slug
 
 class BusinessType(models.Model):
     name = models.CharField(max_length=128)

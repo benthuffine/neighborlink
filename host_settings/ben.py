@@ -1,6 +1,7 @@
 from host_settings.st_elmo import *
 
 DEBUG = True
+TEMPLATE_DEBUG = True
 
 DATABASES = {
     'default': {
@@ -44,4 +45,36 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'logfile': {
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': '/Users/ben/mdk/neighborlink/error.txt',
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['logfile'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'neighborlink': {
+            'handlers': ['logfile'],
+            'level': 'INFO',
+            'propagate': False,
+        }
+    }
 }

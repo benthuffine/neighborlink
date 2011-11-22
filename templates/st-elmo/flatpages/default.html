@@ -1,0 +1,30 @@
+{% extends "base.html" %}				
+
+{% block content %}
+				<div class="span_content span_thin">
+					<div id="HeroImage"><img src="{% block hero %}{% endblock hero %}" height="201" width="674"></div>
+					<div id="PageContent">
+						<h1>{{ flatpage.title }}</h1>
+						<div class="Copy">
+							{{ flatpage.content|safe }}
+						</div>
+					</div>
+				</div>
+				<div id="SideNavigation">
+					<div class="Widget NewsletterForm">
+						<div class="teaser archbi">want to stay in the loop?</div>
+						<div class="calltoaction archb">join the Neighborhood Email List</div>
+						<form action="?" method="post">
+							<input type="text" value="" title="email address" class="email input">
+							<input type="submit" value="Join" class="button submit">
+						</form>
+					</div>
+					<div class="Widget SocialSidebar">
+						<div class="Header">Elsewhere</div>
+						<div class="Content">
+							{% include "sociallinks.html" %}
+						</div>
+					</div>
+				</div>
+{% endblock content %}
+	

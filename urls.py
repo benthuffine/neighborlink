@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
-    
+    (r'^comments/', include('django.contrib.comments.urls')),
 )
 
 if settings.DEBUG:
@@ -32,6 +32,10 @@ urlpatterns += patterns('neighborlink.apps.content.views',
     (r'^about/$', 'about_list'),
     (r'^resources/(?P<slug>[\w-]+)/$', 'resource_detail'),
     (r'^resources/$', 'resource_list'),
+
+    (r'^businesses/$', 'business_list'),
+    (r'^businesses/(?P<slug>[\w-]+)/$', 'business_detail'),
+
     (r'^$', 'home'),
 )
 

@@ -15,10 +15,10 @@ class Entity(models.Model):
     state = models.CharField(max_length=2, null=True, blank=True)
     phone = models.CharField(max_length=16, null=True, blank=True)
     zip = models.CharField(max_length=10, null=True, blank=True)
-    year_founded = models.DateField(null=True, blank=True)
+    founded = models.CharField(max_length=128, null=True, blank=True)
     featurable = models.BooleanField(default=False)
     readable_location = models.CharField(max_length=2046, null=True, blank=True)
-    owners = models.ManyToManyField(User)
+    record_owners = models.ManyToManyField(User)
     heroshot = models.ImageField(upload_to='heros', null=True, blank=True)
 
     def get_address(self, single_line=True):
@@ -60,9 +60,10 @@ class BusinessType(models.Model):
         return self.name
 
 class Business(Entity):
-    hours = models.CharField(max_length=1024)
+    hours = models.CharField(max_length=1024, null=True, blank=True)
     business_type = models.ForeignKey(BusinessType)
-    features = models.CharField(max_length=1024)
+    features = models.CharField(max_length=1024, null=True, blank=True)
+    owners = models.CharField(max_length=1024, null=True, blank=True)
 
 class Denomination(models.Model):
     name = models.CharField(max_length=1024)
@@ -85,11 +86,11 @@ class Offer(models.Model):
     description = models.TextField()
     models.ForeignKey(Business) 
 
-class Comment(models.Model):
-    insert_date = models.DateField(auto_now_add=True)
-    rating = models.BooleanField(default=True)
-    comment = models.TextField()
-    entity = models.ForeignKey(Entity)  
+# class Comment(models.Model):
+#     insert_date = models.DateField(auto_now_add=True)
+#     rating = models.BooleanField(default=True)
+#     comment = models.TextField()
+#     entity = models.ForeignKey(Entity)  
 
 class Featured(models.Model):
     entity = models.ForeignKey(Entity)

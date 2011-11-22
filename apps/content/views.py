@@ -18,8 +18,8 @@ def home(request):
     
     return render_to_response('content/home.html', context)
 
-def page_list(request, contentpage, items_list, slug):
-    paginator = Paginator(items_list, 5)
+def page_list(request, contentpage, items_list, slug, per_page=5):
+    paginator = Paginator(items_list, per_page)
 
     try:
         page = int(request.GET.get('page', '1'))

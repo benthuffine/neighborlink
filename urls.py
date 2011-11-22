@@ -25,7 +25,7 @@ urlpatterns += patterns('',
     (r'^about/feed/$', LatestAboutPageFeed()),
 )
 
-urlpatterns += patterns('neightborlink.apps.entity.views',
+urlpatterns += patterns('neighborlink.apps.entity.views',
     (r'^businesses/$', 'business_list'),
     (r'^businesses/(?P<slug>[\w-]+)/$', 'business_detail'),
 )

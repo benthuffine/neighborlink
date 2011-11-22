@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import HttpResponseRedirect
 
 from neighborlink.apps.content.models import Page
-from neighborlink.apps.content.views import page_list, 
+from neighborlink.apps.content.views import page_list
 from neighborlink.apps.entity.models import *
 
 def page_detail(request, item, slug):

@@ -86,7 +86,7 @@ def service_list(request):
     if request.GET.get('type'):
         services_list = services_list.filter(service_type__slug__exact=request.GET.get('type'))
 
-    context = page_list(request, contentpage, church_list, slug, per_page=6)
+    context = page_list(request, contentpage, services_list, slug, per_page=6)
 
     return render_to_response('entity/service_list.html', {}, context_instance=context)
 

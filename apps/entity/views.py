@@ -20,7 +20,7 @@ def business_list(request):
 
 	context = page_list(request, contentpage, business_list, slug, per_page=6)
 
-	render_to_response('entity/business_list.html', {}, context_instance=context)
+	return render_to_response('entity/business_list.html', {}, context_instance=context)
 
 def business_detail(request):
 	business = get_object_or_404(Business, slug__exact=slug)

@@ -43,6 +43,9 @@ def business_list(request):
     contentpage = get_object_or_404(Page, slug__exact=slug)
     business_list = Business.objects.order_by('name')
 
+    if request.GET.get('type'):
+        business_list.filter(business_type__slug__exact=request.GET.get('type'))
+
     context = page_list(request, contentpage, business_list, slug, per_page=6)
 
     return render_to_response('entity/business_list.html', {}, context_instance=context)
@@ -60,5 +63,37 @@ def church_list(request):
     contentpage = get_object_or_404(Page, slug__exact=slug)
     church_list = Church.objects.order_by('name')
 
+    if request.GET.get('denomination'):
+        business_list.filter(denomination__slug__exact=request.GET.get('denomination'))
+
     context = page_list(request, contentpage, church_list, slug, per_page=6)
-        
+
+    return render_to_response('entity/church_list.html', {}, context_instance=context)
+
+def church_detail(request, slug):
+    church = get_object_or_404(Church, slug__exact=slug)
+    church_list = Church.objects.order_by('name')
+
+    context = page_detail(request, church, church_list, slug)
+
+    return render_to_response('entity/church_detail.html', {}, context_instance=context)
+
+def service_list(request):
+    slug = 'services'
+    contentpage = get_object_or_404(Page, slug__exact=slug)
+    services_list = Service.objects.order_by('name')
+
+    if request.GET.get('type'):
+        business_list.filter(service_type__slug__exact=request.GET.get('type'))
+
+    context = page_list(request, contentpage, church_list, slug, per_page=6)
+
+    return render_to_response('entity/service_list.html', {}, context_instance=context)
+
+def service_detail(request, slug):
+    service = get_object_or_404(Service, slug__exact=slug)
+    services_list = Service.objects.order_by('name')
+
+    context = page_detail(request, service, services_list, slug)
+
+    return render_to_response('entity/service_detail.html', {}, context_instance=context)

@@ -4,11 +4,14 @@ from neighborlink.apps.entity.models import *
 class EntityAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
+class TypeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Church, EntityAdmin)
 admin.site.register(Organization, EntityAdmin)
-admin.site.register(BusinessType)
-admin.site.register(Denomination)
+admin.site.register(BusinessType, TypeAdmin)
+admin.site.register(Denomination, TypeAdmin)
+admin.site.register(ServiceType, TypeAdmin)
 admin.site.register(Offer)
 
 class OfferInline(admin.TabularInline):

@@ -30,8 +30,8 @@ urlpatterns += patterns('neighborlink.apps.entity.views',
     (r'^businesses/(?P<slug>[\w-]+)/$', 'business_detail'),
     (r'^churches/$', 'church_list'),
     (r'^churches/(?P<slug>[\w-]+)/$', 'church_detail'),
-    (r'^services/$', 'service_lsit'),
-    (r'^services/(?P<slug>[\w-]+)/$', 'service_detial'),
+    (r'^services/$', 'service_list'),
+    (r'^services/(?P<slug>[\w-]+)/$', 'service_detail'),
 )
 
 urlpatterns += patterns('neighborlink.apps.content.views',

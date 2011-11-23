@@ -19,8 +19,11 @@ class Entity(models.Model):
     founded = models.CharField(max_length=128, null=True, blank=True)
     featurable = models.BooleanField(default=False)
     readable_location = models.CharField(max_length=2046, null=True, blank=True)
-    record_owners = models.ManyToManyField(User)
-    heroshot = models.ImageField(upload_to='heros', null=True, blank=True)
+    record_owners = models.ManyToManyField(User, null=True)
+    heroshot = models.ImageField(upload_to='heroes', null=True, blank=True)
+
+    def __unicode__(self):
+        return self.name
 
     def get_address(self, single_line=True):
         joiner = single_line and ' ' or '<br>'

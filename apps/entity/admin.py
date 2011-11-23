@@ -9,6 +9,7 @@ class TypeAdmin(admin.ModelAdmin):
 
 admin.site.register(Church, EntityAdmin)
 admin.site.register(Organization, EntityAdmin)
+admin.site.register(Service, EntityAdmin)
 admin.site.register(BusinessType, TypeAdmin)
 admin.site.register(Denomination, TypeAdmin)
 admin.site.register(ServiceType, TypeAdmin)

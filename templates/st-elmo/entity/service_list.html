@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+				<div class="span_content span_wide">
+					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image|default:"/img/demo/hero_churches.png" }}' height="201" width="958"></div> 
+					<div id="PageContent">
+						<h1>Services</h1>
+					{% for service in items.object_list %}	
+						<div class="Listing">
+							<div class="image">
+								<a href="{{ service.get_absolute_url }}"><img src="{% if service.heroshot %}{{ service.heroshot.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324"></a>
+							</div>
+							<div class="description_block">
+								<h2><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></h2>
+								<div class="subtitle"><em>{{ service.tagline }}</em></div>
+								<div class="details">
+									<div><strong>Type:</strong> 
+									{% for type in service.service_type.all %}
+										<a href="{{ type.get_absolute_url }}">{{ type.name }}</a>{% if not forloop.last %}, {% endif %}
+									{% endfor %}
+									</div>
+									<div><strong>Founded:</strong> {{ service.founded }}</div>
+									<div><strong>Located:</strong> {{ service.readable_location }}</div>
+									<div><strong>Hours:</strong> {{ service.hours }}</div>
+								</div>
+							</div>
+							<div class="context_options">
+								<a href="{{ service.get_absolute_url }}" class="context_button learn_more"></a>
+								{% if service.google_maps_url %}<a href="{{ service.google_maps_url }}" class="context_button directions"></a>{% endif %}
+								{% if service.website %}<a href="{{ service.website }}" class="context_button website"></a>{% endif %}
+							</div>
+							<div class="clear"></div>
+						</div>
+					{% endfor %}
+						<div class="pagination">
+						{% if items.has_previous %}
+							<a href="{{ prev_item.get_absolute_url }}" class="previous">&lt; previous</a>
+						{% endif %}
+						{% if items.has_next %}
+							<a href="{{ next_item.get_absolute_url }}" class="next">next &gt;</a>
+						{% endif %}
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+{% endblock content %}

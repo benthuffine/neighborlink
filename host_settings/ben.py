@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
+    'django.contrib.comments',
     'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',

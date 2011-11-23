@@ -3,16 +3,16 @@
 
 {% block content %}
 				<div class="span_content span_wide">
-					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image|default:"/img/demo/hero_diner.png" }}' height="201" width="958"></div> 
+					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image|default:"/img/demo/hero_churches.png" }}' height="201" width="958"></div> 
 					<div id="PageContent">
-						<h1>Businesses</h1>
+						<h1>Churches</h1>
 						<div class="Listing ListingDetail">
 							<div class="ListingResources">
 								<div class="image">
 									<img src="{% if item.heroshot %}{{ item.heroshot.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324">
 								</div>
 								<div class="context_options">
-									<a href="{{ item.google_maps_url }}" class="context_button directions left"></a>
+									{% if item.google_maps_url %}<a href="{{ item.google_maps_url }}" class="context_button directions left"></a>{% endif %}
 									{% if item.website %}<a href="{{ item.website }}" class="context_button website right"></a>{% endif %}
 									{% if item.facebook %}<a href="{{ item.facebook }}" class="context_button facebook left"></a>{% endif %}
 									{% if item.twitter %}<a href="{{ item.twitter }}" class="context_button twitter right"></a>{% endif %}
@@ -23,12 +23,11 @@
 								<h2>{{ item.name }}</h2>
 								<div class="subtitle"><em>{{ item.tagline }}</em></div>
 								<div class="details">
-									<div><strong>Type:</strong> <a href="{{ item.business_type.get_absolute_url }}">{{ item.business_type }}</a></div>
-									<div><strong>Founded:</strong> in {{ item.year_founded }}</div>
-									<div><strong>Owners:</strong> {{ item.owners }}</div>
+									<div><strong>Denomination:</strong> <a href="{{ item.denomination.get_absolute_url }}">{{ item.denomination }}</a></div>
+									<div><strong>Founded:</strong> {{ item.founded }}</div>
+									<div><strong>Pastors:</strong> {{ item.pastors }}</div>
 									<div><strong>Located:</strong> {{ item.readable_location }}</div>
 									<div><strong>Hours:</strong> {{ item.hours }}</div>
-									<div><strong>Features:</strong> {{ item.features }}</div>
 									<div><strong>Address:</strong> {{ item.single_line_address }}</div>
 									<div><strong>Phone:</strong> {{ item.phone }}</div>
 									<div><strong>Email:</strong> <a href="mailto:{{ item.email }}">{{ item.email }}</a></div>
@@ -37,14 +36,6 @@
 								<div class="Copy">
 									{{ item.description|safe }}
 								</div>
-								
-							{% if item.current_offers %}
-								<div class="details">
-								{% for offer in item.current_offers %}
-									<div><strong>{{ offer.name }}:</strong> {{ offer.description|safe }}</div>
-								{% endfor %}
-								</div>
-							{% endif %}
 								
 							</div>
 							<div class="clear"></div>
@@ -61,8 +52,8 @@
 						{% render_comment_form for item %}
 {% endcomment %}							
 						<div class="pagination">
-							<a href="{{ prev_item.get_absolute_url }}" class="previous">&lt; previous business</a>
-							<a href="{{ next_item.get_absolute_url }}" class="next">next business &gt;</a>
+							<a href="{{ prev_item.get_absolute_url }}" class="previous">&lt; previous church</a>
+							<a href="{{ next_item.get_absolute_url }}" class="next">next church &gt;</a>
 							<div class="clear"></div>
 						</div>
 					

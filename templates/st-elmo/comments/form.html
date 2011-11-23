@@ -16,14 +16,14 @@
 							{% endif %}
 						{% endfor %}
 									<div class="FieldName">Name *</div>
-									<div class="FieldInput">{{ form.name }}</div>
+									<div class="FieldInput"><input id="id_name" type="text" name="name" maxlength="50" class="input" /></div>
 									<div class="FieldName">Email *</div>
-									<div class="FieldInput">{{ form.email }}</div>
+									<div class="FieldInput"><input type="text" name="email" id="id_email" class="input" /></div>
 									<div class="Notes">* required</div>
 								</div>
 								<div class="ComposeMessage">
 									<div class="FieldName">Message *</div>
-									{{ form.comment }}
+									<textarea id="id_comment" rows="10" cols="40" name="comment" class="input"></textarea>
 								</div>
 								<div class="clear"></div>
 								<div class="right"><input type="submit" value="Submit Comment" class="button submit"></div>

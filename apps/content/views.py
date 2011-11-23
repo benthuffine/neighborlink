@@ -99,3 +99,21 @@ def resource_detail(request, slug):
     context = page_detail(request, resource, recent_entries, 'resources')
 
     return render_to_response('content/resource_detail.html', {}, context_instance=context)
+
+def neighborhood_association_list(request):
+    slug = 'neighborhood-association'
+    contentpage = get_object_or_404(Page, slug__exact=slug)
+    neighborhood_association_list = CommunityAssocationPage.objects.order_by('-insert_date')
+
+    context = page_list(request, contentpage, neighborhood_association_list, slug)
+
+    return render_to_response('content/neighborhood_association_list.html', {}, context_instance=context)
+
+def neighborhood_association_detail(request, slug):
+    neighborhood_association_page = get_object_or_404(CommunityAssocationPage, slug__exact=slug)
+    recent_entries = CommunityAssocationPage.objects.order_by('-insert_date')[:6]
+
+    context = page_detail(request, neighborhood_association_page, recent_entries, 'neighborhood-association')
+
+    return render_to_response('content/neighborhood_association_detail.html', {}, context_instance=context)
+    

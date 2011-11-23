@@ -55,21 +55,38 @@ class Entity(models.Model):
     multi_line_address = property(get_multi_line_address)
 
     def get_google_maps_url(self):
-        return 'http://maps.google.com/maps?q= %s' % self.get_address()
+        return self.addr1 and 'http://maps.google.com/maps?q= %s' % self.get_address() or ''
     google_maps_url = property(get_google_maps_url)
-
-    def get_current_offers(self):
-        return self.offer_set.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now())
-    current_offers = property(get_current_offers)
-
-    def get_absolute_url(self):
-        return '/businesses/%s/' % self.slug
 
 class BusinessType(models.Model):
     name = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=255)
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return '/businesses/?type=%s' % self.slug
+
+class Denomination(models.Model):
+    name = models.CharField(max_length=1024)
+    slug = models.SlugField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return '/churches/?denomination=%s' % self.slug
+        
+class ServiceType(models.Model):
+    name = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=255)
+    
+    def __unicode__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return '/services/?type=%s' % self.slug
 
 class Business(Entity):
     hours = models.CharField(max_length=1024, null=True, blank=True)
@@ -77,19 +94,31 @@ class Business(Entity):
     features = models.CharField(max_length=1024, null=True, blank=True)
     owners = models.CharField(max_length=1024, null=True, blank=True)
 
-class Denomination(models.Model):
-    name = models.CharField(max_length=1024)
+    def get_absolute_url(self):
+        return '/businesses/%s/' % self.slug
 
-    def __unicode__(self):
-        return self.name
+    def get_current_offers(self):
+        return self.offer_set.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now())
+    current_offers = property(get_current_offers)
 
 class Church(Entity):
     hours = models.CharField(max_length=1024)
     denomination = models.ForeignKey(Denomination)
 
+    def get_absolute_url(self):
+        return '/churches/%s/' % self.slug
+
+class Service(Entity):
+    service_type = models.ManyToManyField(ServiceType)
+
+    def get_absolute_url(self):
+        return '/services/%s/' % self.slug
+
 class Organization(Entity):
     pass
 
+    def get_absolute_url(self):
+        return '/organizations/%s/' % self.slug
 
 class Offer(models.Model):
     name = models.CharField(max_length=512)
@@ -97,12 +126,6 @@ class Offer(models.Model):
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField()
     business = models.ForeignKey(Business) 
-
-# class Comment(models.Model):
-#     insert_date = models.DateField(auto_now_add=True)
-#     rating = models.BooleanField(default=True)
-#     comment = models.TextField()
-#     entity = models.ForeignKey(Entity)  
 
 class Featured(models.Model):
     entity = models.ForeignKey(Entity)

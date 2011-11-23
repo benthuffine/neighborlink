@@ -44,7 +44,7 @@ def business_list(request):
     business_list = Business.objects.order_by('name')
 
     if request.GET.get('type'):
-        business_list.filter(business_type__slug__exact=request.GET.get('type'))
+        business_list = business_list.filter(business_type__slug__exact=request.GET.get('type'))
 
     context = page_list(request, contentpage, business_list, slug, per_page=6)
 
@@ -64,7 +64,7 @@ def church_list(request):
     church_list = Church.objects.order_by('name')
 
     if request.GET.get('denomination'):
-        business_list.filter(denomination__slug__exact=request.GET.get('denomination'))
+        church_list = church_list.filter(denomination__slug__exact=request.GET.get('denomination'))
 
     context = page_list(request, contentpage, church_list, slug, per_page=6)
 
@@ -84,7 +84,7 @@ def service_list(request):
     services_list = Service.objects.order_by('name')
 
     if request.GET.get('type'):
-        business_list.filter(service_type__slug__exact=request.GET.get('type'))
+        services_list = services_list.filter(service_type__slug__exact=request.GET.get('type'))
 
     context = page_list(request, contentpage, church_list, slug, per_page=6)
 

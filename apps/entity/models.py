@@ -91,7 +91,7 @@ class Offer(models.Model):
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField()
-    models.ForeignKey(Business) 
+    business = models.ForeignKey(Business) 
 
 # class Comment(models.Model):
 #     insert_date = models.DateField(auto_now_add=True)

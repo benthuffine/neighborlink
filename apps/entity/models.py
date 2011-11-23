@@ -68,6 +68,9 @@ class BusinessType(models.Model):
     def get_absolute_url(self):
         return '/businesses/?type=%s' % self.slug
 
+    class Meta:
+        ordering = ["name"]
+
 class Denomination(models.Model):
     name = models.CharField(max_length=1024)
     slug = models.SlugField(max_length=255)
@@ -77,6 +80,9 @@ class Denomination(models.Model):
 
     def get_absolute_url(self):
         return '/churches/?denomination=%s' % self.slug
+
+    class Meta:
+        ordering = ["name"]
         
 class ServiceType(models.Model):
     name = models.CharField(max_length=128)
@@ -87,6 +93,9 @@ class ServiceType(models.Model):
 
     def get_absolute_url(self):
         return '/services/?type=%s' % self.slug
+
+    class Meta:
+        ordering = ["name"]
 
 class Business(Entity):
     hours = models.CharField(max_length=1024, null=True, blank=True)
@@ -107,6 +116,7 @@ class Business(Entity):
 class Church(Entity):
     hours = models.CharField(max_length=1024)
     denomination = models.ForeignKey(Denomination)
+    pastors = models.CharField(max_length=1024, null=True, blank=True)
 
     def get_absolute_url(self):
         return '/churches/%s/' % self.slug

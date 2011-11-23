@@ -22,7 +22,7 @@ def business_list(request):
 
 	return render_to_response('entity/business_list.html', {}, context_instance=context)
 
-def business_detail(request):
+def business_detail(request, slug):
 	business = get_object_or_404(Business, slug__exact=slug)
 
 	context = page_detail(request, business, slug)

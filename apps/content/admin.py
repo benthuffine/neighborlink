@@ -22,6 +22,7 @@ admin.site.register(Page, PageAdmin)
 admin.site.register(NewsEvent, PageAdmin)
 admin.site.register(AboutPage, PageAdmin)
 admin.site.register(ResourcePage, PageAdmin)
+admin.site.register(CommunityAssocationPage, PageAdmin)
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld

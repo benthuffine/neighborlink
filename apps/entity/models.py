@@ -20,7 +20,7 @@ class Entity(models.Model):
     founded = models.CharField(max_length=128, null=True, blank=True)
     featurable = models.BooleanField(default=False)
     readable_location = models.CharField(max_length=2046, null=True, blank=True)
-    record_owners = models.ManyToManyField(User, null=True)
+    record_owners = models.ManyToManyField(User, null=True, blank=True)
     heroshot = models.ImageField(upload_to='heroes', null=True, blank=True)
 
     def __unicode__(self):

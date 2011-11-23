@@ -36,6 +36,12 @@ class ResourcePage(PageInfo):
     def get_absolute_url(self):
         return '/resources/%s/' % self.slug
 
+class CommunityAssocationPage(PageInfo):
+    pass
+    
+    def get_absolut_url(self):
+        return '/community-association/%s/' % self.slug        
+
 class NewsEvent(PageInfo):
     start_date = models.DateField(null=True, verbose_name='Date to start display')
     end_date = models.DateField(null=True, verbose_name='Date to end display')

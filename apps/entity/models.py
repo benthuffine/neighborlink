@@ -101,12 +101,18 @@ class Business(Entity):
         return self.offer_set.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now())
     current_offers = property(get_current_offers)
 
+    class Meta:
+        verbose_name_plural = 'Businesses'
+
 class Church(Entity):
     hours = models.CharField(max_length=1024)
     denomination = models.ForeignKey(Denomination)
 
     def get_absolute_url(self):
         return '/churches/%s/' % self.slug
+
+    class Meta:
+        verbose_name_plural = 'Churches'
 
 class Service(Entity):
     service_type = models.ManyToManyField(ServiceType)

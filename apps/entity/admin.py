@@ -7,3 +7,6 @@ class EntityAdmin(admin.ModelAdmin):
 admin.site.register(Business, EntityAdmin)
 admin.site.register(Church, EntityAdmin)
 admin.site.register(Organization, EntityAdmin)
+admin.site.register(BusinessType)
+admin.site.register(Denomination)
+admin.site.register(Offer)

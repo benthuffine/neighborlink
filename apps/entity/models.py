@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 class Entity(models.Model):
     name = models.CharField(max_length=128)
@@ -56,6 +57,10 @@ class Entity(models.Model):
     def get_google_maps_url(self):
         return 'http://maps.google.com/maps?q= %s' % self.get_address()
     google_maps_url = property(get_google_maps_url)
+
+    def get_current_offers(self):
+        return self.offer_set.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now())
+    current_offers = property(get_current_offers)
 
     def get_absolute_url(self):
         return '/businesses/%s/' % self.slug

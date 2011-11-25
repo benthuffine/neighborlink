@@ -119,7 +119,7 @@ class Business(Entity):
         verbose_name_plural = 'Businesses'
 
 class Church(Entity):
-    hours = models.CharField(max_length=1024)
+    hours = models.CharField(max_length=1024, null=True, blank=True)
     denomination = models.ForeignKey(Denomination)
     pastors = models.CharField(max_length=1024, null=True, blank=True)
 

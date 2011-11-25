@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -143,8 +144,17 @@ class Offer(models.Model):
     description = models.TextField()
     business = models.ForeignKey(Business) 
 
+    def __unicode__(self):
+        return self.name
+
 class Featured(models.Model):
     entity = models.ForeignKey(Entity)
     date_featured = models.DateField()
 
+    def __unicode__(self):
+        return self.entity.name
 
+    def clean_entity(self):
+        if not self.entity.featurable:
+            raise forms.ValidationError('The entity is not featureable.')
+        return self.cleaned_data['entity']

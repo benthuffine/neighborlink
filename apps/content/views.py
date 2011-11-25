@@ -7,13 +7,22 @@ from django.http import Http404
 
 from neighborlink.apps.content.models import *
 
+
 def home(request):
+    from neighborlink.apps.entity.models import Featured, Entity
+
     contentpage = get_object_or_404(Page, slug__exact='home')
     recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now()).order_by('start_date', 'event_start_date')[:2]
+
+    featured_business = Featured.objects.order_by('-date_featured')
+    if not featured_business:
+        #   Pick a random featurable business
+        featured_business = Business.objects.filter(featurable=True).order_by('?')[0]
 
     context = RequestContext(request, {
         'contentpage': contentpage,
         'recent_events': recent_events,
+        'featured_business': featured_business
     })
     
     return render_to_response('content/home.html', context)

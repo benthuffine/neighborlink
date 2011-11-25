@@ -25,7 +25,7 @@
 					<div id="FeaturedBusiness" class="standard wide first">
 						<div class="Header">Featured Business<a href="/businessess" class="more">view all &gt;</a></div>
 						<div class="Content">
-							<div class="Image"><a href="{{ featured_business.get_absolute_url }}"><img src="{{ featured_business.hero.url }}" height="110" width="324"></a></div>
+							<div class="Image"><a href="{{ featured_business.get_absolute_url }}"><img src="{% if featured_business.heroshot %}{{ featured_business.heroshot.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324"></a></div>
 							<div class="Listing">
 								<a href="{{ featured_business.get_absolute_url }}" class="Title">{{ featured_business.name }}</a>
 								<div class="subtitle"><em>{{ featured_business.tagline }}</em></div>

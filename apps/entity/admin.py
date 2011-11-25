@@ -66,7 +66,7 @@ class ChurchAdmin(EntityAdmin):
 admin.site.register(Church, ChurchAdmin)
 
 class ServiceAdmin(EntityAdmin):
-        fieldsets = (
+    fieldsets = (
         (None, {
             'fields': ('name', 'slug', 'tagline', 'description', 'featurable', 'heroshot_full', 'heroshot_slim', 'service_type')
         }),

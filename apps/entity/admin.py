@@ -14,6 +14,7 @@ admin.site.register(BusinessType, TypeAdmin)
 admin.site.register(Denomination, TypeAdmin)
 admin.site.register(ServiceType, TypeAdmin)
 admin.site.register(Offer)
+admin.site.register(Featured)
 
 class OfferInline(admin.TabularInline):
     model = Offer

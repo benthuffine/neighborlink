@@ -468,6 +468,9 @@ a.rss:hover{
 }
 #FeaturedPanel .Image{
 	margin-bottom:15px;
+	overflow: hidden;
+	height: 110px;
+	width: 324px;
 }
 #FeaturedPanel .Header,
 .span_content .Header{

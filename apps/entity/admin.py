@@ -62,6 +62,7 @@ class ChurchAdmin(EntityAdmin):
     )
 
     list_filter = ('denomination', 'featurable')
+    list_display = ('name', 'denomination', 'featurable')
 
 admin.site.register(Church, ChurchAdmin)
 
@@ -88,6 +89,7 @@ class ServiceAdmin(EntityAdmin):
     )
 
     list_filter = ('service_type', 'featurable')
+    list_display = ('name', 'service_type', 'featurable')
        
 admin.site.register(Service, ServiceAdmin)       
 
@@ -123,5 +125,6 @@ class BusinessAdmin(EntityAdmin):
     )
 
     list_filter = ('business_type', 'featurable')
+    list_display = ('name', 'business_type', 'featurable')
 
 admin.site.register(Business, BusinessAdmin)    

@@ -9,7 +9,7 @@ from neighborlink.apps.content.models import *
 
 
 def home(request):
-    from neighborlink.apps.entity.models import Featured, Entity
+    from neighborlink.apps.entity.models import Featured, Business
 
     contentpage = get_object_or_404(Page, slug__exact='home')
     recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now()).order_by('start_date', 'event_start_date')[:2]

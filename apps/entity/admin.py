@@ -25,6 +25,8 @@ class EntityAdmin(admin.ModelAdmin):
         })
     )
 
+    search_fields = ['name']
+
 class TypeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
@@ -59,6 +61,8 @@ class ChurchAdmin(EntityAdmin):
         })
     )
 
+    list_filter = ('denomination', 'featurable')
+
 admin.site.register(Church, ChurchAdmin)
 
 class ServiceAdmin(EntityAdmin):
@@ -82,6 +86,8 @@ class ServiceAdmin(EntityAdmin):
             'fields': ('founded',)
         })
     )
+
+    list_filter = ('service_type', 'featurable')
        
 admin.site.register(Service, ServiceAdmin)       
 
@@ -115,5 +121,7 @@ class BusinessAdmin(EntityAdmin):
             'classes': ('collapse open',),
         })
     )
+
+    list_filter = ('business_type', 'featurable')
 
 admin.site.register(Business, BusinessAdmin)    

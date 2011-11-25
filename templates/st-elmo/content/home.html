@@ -30,8 +30,7 @@
 								<a href="{{ featured_business.get_absolute_url }}" class="Title">{{ featured_business.name }}</a>
 								<div class="subtitle"><em>{{ featured_business.tagline }}</em></div>
 								<div class="details">
-									<div><strong>Type:</strong> <a href="{{ featured_business.business_type.get_absolute_url }}">{{ featured_business.business_type }}</a></div>
-									<div><strong>Founded:</strong> in {{ featured_business.year_founded }}</div>
+									<div>{{ featured_business.description|truncatewords_html:40 }}</div>
 								</div>
 								<a href="{{ featured_business.get_absolute_url }}" class="more">Learn More &gt;</a>
 							</div>

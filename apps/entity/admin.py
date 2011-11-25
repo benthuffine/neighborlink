@@ -22,6 +22,10 @@ class EntityAdmin(admin.ModelAdmin):
         }),
         (None, {
             'fields': ('founded',)
+        }),
+        ('Advanced Features', {
+            'fields': ('record_owners',)
+            'classes': ('collapse closed',),
         })
     )
 
@@ -58,6 +62,10 @@ class ChurchAdmin(EntityAdmin):
         ('Miscellaneous', {
             'fields': ('founded', 'pastors'),
             'classes': ('collapse open',),
+        }),
+        ('Advanced Features', {
+            'fields': ('record_owners',)
+            'classes': ('collapse closed',),
         })
     )
 
@@ -85,6 +93,10 @@ class ServiceAdmin(EntityAdmin):
         }),
         (None, {
             'fields': ('founded',)
+        }),
+        ('Advanced Features', {
+            'fields': ('record_owners',)
+            'classes': ('collapse closed',),
         })
     )
 
@@ -121,6 +133,10 @@ class BusinessAdmin(EntityAdmin):
         ('Miscellaneous', {
             'fields': ('founded', 'owners', 'features'),
             'classes': ('collapse open',),
+        }),
+        ('Advanced Features', {
+            'fields': ('record_owners',)
+            'classes': ('collapse closed',),
         })
     )
 

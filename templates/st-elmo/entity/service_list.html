@@ -26,8 +26,8 @@
 							</div>
 							<div class="context_options">
 								<a href="{{ service.get_absolute_url }}" class="context_button learn_more"></a>
-								{% if service.google_maps_url %}<a href="{{ service.google_maps_url }}" class="context_button directions"></a>{% endif %}
-								{% if service.website %}<a href="{{ service.website }}" class="context_button website"></a>{% endif %}
+								{% if service.google_maps_url %}<a href="{{ service.google_maps_url }}" class="context_button directions" target="_blank"></a>{% endif %}
+								{% if service.website %}<a href="{{ service.website }}" class="context_button website" target="_blank"></a>{% endif %}
 							</div>
 							<div class="clear"></div>
 						</div>

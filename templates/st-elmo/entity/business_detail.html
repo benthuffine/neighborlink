@@ -12,10 +12,10 @@
 									<img src="{% if item.heroshot %}{{ item.heroshot.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324">
 								</div>
 								<div class="context_options">
-									<a href="{{ item.google_maps_url }}" class="context_button directions left"></a>
-									{% if item.website %}<a href="{{ item.website }}" class="context_button website right"></a>{% endif %}
-									{% if item.facebook %}<a href="{{ item.facebook }}" class="context_button facebook left"></a>{% endif %}
-									{% if item.twitter %}<a href="{{ item.twitter }}" class="context_button twitter right"></a>{% endif %}
+									{% if item.google_maps_url %}<a href="{{ item.google_maps_url }}" class="context_button directions left" target="_blank"></a>{% endif %}
+									{% if item.website %}<a href="{{ item.website }}" class="context_button website right" target="_blank"></a>{% endif %}
+									{% if item.facebook %}<a href="{{ item.facebook }}" class="context_button facebook left" target="_blank"></a>{% endif %}
+									{% if item.twitter %}<a href="{{ item.twitter }}" class="context_button twitter right" target="_blank"></a>{% endif %}
 								</div>
 								<div class="clear"></div>
 							</div>

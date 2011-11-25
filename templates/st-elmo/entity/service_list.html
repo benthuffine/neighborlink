@@ -20,7 +20,7 @@
 									{% endfor %}
 									</div>
 									{% if service.phone %}<div><strong>Phone:</strong> {{ service.phone }}</div>{% endif %}
-									<div><strong>Located:</strong> {% if service.readable_location %}{{ service.readable_location }}{% else %}{{ service.single_line_address }}{% endif %}</div>
+									{% if service.readable_location or service.addr1 %}<div><strong>Located:</strong> {% firstof service.readable_location service.single_line_address %}</div>{% endif %}
 									{% if service.hours %}<div><strong>Hours:</strong> {{ service.hours }}</div>{% endif %}
 								</div>
 							</div>

@@ -16,7 +16,7 @@
 								<div class="details">
 									<div><strong>Type:</strong> <a href="{{ business.business_type.get_absolute_url }}">{{ business.business_type }}</a></div>
 									{% if business.phone %}<div><strong>Phone:</strong> {{ business.phone }}</div>{% endif %}
-									<div><strong>Located:</strong> {% if business.readable_location %}{{ business.readable_location }}{% else %}{{ business.single_line_address }}{% endif %}</div>
+									{% if business.readable_location or business.addr1 %}<div><strong>Located:</strong> {% firstof business.readable_location business.single_line_address %}</div>{% endif %}
 									{% if business.hours %}<div><strong>Hours:</strong> {{ business.hours }}</div>{% endif %}
 								</div>
 							</div>

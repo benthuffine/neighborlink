@@ -16,7 +16,7 @@
 								<div class="details">
 									<div><strong>Denomination:</strong> <a href="{{ church.denomination.get_absolute_url }}">{{ church.denomination }}</a></div>
 									{% if church.phone %}<div><strong>Phone:</strong> {{ church.phone }}</div>{% endif %}
-									<div><strong>Located:</strong> {% if church.readable_location %}{{ church.readable_location }}{% else %}{{ church.single_line_address }}{% endif %}</div>
+									{% if church.readable_location or church.addr1 %}<div><strong>Located:</strong> {% firstof church.readable_location church.single_line_address %}</div>{% endif %}
 									{% if church.hours %}<div><strong>Hours:</strong> {{ church.hours }}</div>{% endif %}
 								</div>
 							</div>

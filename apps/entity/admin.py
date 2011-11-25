@@ -89,7 +89,7 @@ class ServiceAdmin(EntityAdmin):
     )
 
     list_filter = ('service_type', 'featurable')
-    list_display = ('name', 'service_type', 'featurable')
+    list_display = ('name', 'featurable')
        
 admin.site.register(Service, ServiceAdmin)       
 

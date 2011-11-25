@@ -60,6 +60,9 @@ class Entity(models.Model):
         return self.addr1 and 'http://maps.google.com/maps?q= %s' % self.get_address() or ''
     google_maps_url = property(get_google_maps_url)
 
+    class Meta:
+        ordering = ["name"]
+
 class BusinessType(models.Model):
     name = models.CharField(max_length=128)
     slug = models.SlugField(max_length=255)

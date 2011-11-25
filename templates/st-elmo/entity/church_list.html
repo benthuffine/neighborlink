@@ -8,16 +8,16 @@
 					{% for church in items.object_list %}	
 						<div class="Listing">
 							<div class="image">
-								<a href="{{ church.get_absolute_url }}"><img src="{% if church.heroshot_full %}{{ church.heroshot_full.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324"></a>
+								<a href="{{ church.get_absolute_url }}"><img src="{% if church.heroshot_slim %}{{ church.heroshot_slim.url }}{% else %}{% if church.heroshot_full %}{{ church.heroshot_full.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}{% endif %}" width="324"></a>
 							</div>
 							<div class="description_block">
 								<h2><a href="{{ church.get_absolute_url }}">{{ church.name }}</a></h2>
 								<div class="subtitle"><em>{{ church.tagline }}</em></div>
 								<div class="details">
 									<div><strong>Denomination:</strong> <a href="{{ church.denomination.get_absolute_url }}">{{ church.denomination }}</a></div>
-									<div><strong>Founded:</strong> {{ church.founded }}</div>
-									<div><strong>Located:</strong> {{ church.readable_location }}</div>
-									<div><strong>Hours:</strong> {{ church.hours }}</div>
+									{% if church.founded %}<div><strong>Founded:</strong> {{ church.founded }}</div>{% endif %}
+									<div><strong>Located:</strong> {% if church.readable_location %}{{ church.readable_location }}{% else %}{{ church.single_line_address }}{% endif %}</div>
+									{% if church.hours %}<div><strong>Hours:</strong> {{ church.hours }}</div>{% endif %}
 								</div>
 							</div>
 							<div class="context_options">

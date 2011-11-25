@@ -8,7 +8,7 @@
 					{% for service in items.object_list %}	
 						<div class="Listing">
 							<div class="image">
-								<a href="{{ service.get_absolute_url }}"><img src="{% if service.heroshot_full %}{{ service.heroshot_full.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324"></a>
+								<a href="{{ service.get_absolute_url }}"><img src="{% if service.heroshot_slim %}{{ service.heroshot_slim.url }}{% else %}{% if service.heroshot_full %}{{ service.heroshot_full.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}{% endif %}" width="324"></a>
 							</div>
 							<div class="description_block">
 								<h2><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></h2>
@@ -19,9 +19,9 @@
 										<a href="{{ type.get_absolute_url }}">{{ type.name }}</a>{% if not forloop.last %}, {% endif %}
 									{% endfor %}
 									</div>
-									<div><strong>Founded:</strong> {{ service.founded }}</div>
-									<div><strong>Located:</strong> {{ service.readable_location }}</div>
-									<div><strong>Hours:</strong> {{ service.hours }}</div>
+									{% if service.founded %}<div><strong>Founded:</strong> {{ service.founded }}</div>{% endif %}
+									<div><strong>Located:</strong> {% if service.readable_location %}{{ service.readable_location }}{% else %}{{ service.single_line_address }}{% endif %}</div>
+									{% if service.hours %}<div><strong>Hours:</strong> {{ service.hours }}</div>{% endif %}
 								</div>
 							</div>
 							<div class="context_options">

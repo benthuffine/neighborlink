@@ -9,7 +9,7 @@
 						<div class="Listing ListingDetail">
 							<div class="ListingResources">
 								<div class="image">
-									<img src="{% if item.heroshot_full %}{{ item.heroshot_full.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324">
+									<img src="{% if item.heroshot_full %}{{ item.heroshot_full.url }}{% else %}{% if item.heroshot_slim %}{{ item.heroshot_slim.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}{% endif %}" width="324">
 								</div>
 								<div class="context_options">
 									{% if item.google_maps_url %}<a href="{{ item.google_maps_url }}" class="context_button directions left" target="_blank"></a>{% endif %}
@@ -23,14 +23,14 @@
 								<h2>{{ item.name }}</h2>
 								<div class="subtitle"><em>{{ item.tagline }}</em></div>
 								<div class="details">
-									<div><strong>Denomination:</strong> <a href="{{ item.denomination.get_absolute_url }}">{{ item.denomination }}</a></div>
-									<div><strong>Founded:</strong> {{ item.founded }}</div>
-									<div><strong>Pastors:</strong> {{ item.pastors }}</div>
-									<div><strong>Located:</strong> {{ item.readable_location }}</div>
-									<div><strong>Hours:</strong> {{ item.hours }}</div>
-									<div><strong>Address:</strong> {{ item.single_line_address }}</div>
-									<div><strong>Phone:</strong> {{ item.phone }}</div>
-									<div><strong>Email:</strong> <a href="mailto:{{ item.email }}">{{ item.email }}</a></div>
+									{% if item.denomination %}<div><strong>Denomination:</strong> <a href="{{ item.denomination.get_absolute_url }}">{{ item.denomination }}</a></div>{% endif %}
+									{% if item.founded %}<div><strong>Founded:</strong> {{ item.founded }}</div>{% endif %}
+									{% if item.pastors %}<div><strong>Pastors:</strong> {{ item.pastors }}</div>{% endif %}
+									{% if item.readable_location %}<div><strong>Located:</strong> {{ item.readable_location }}</div>{% endif %}
+									{% if item.hours %}<div><strong>Hours:</strong> {{ item.hours }}</div>{% endif %}
+									{% if item.addr1 %}<div><strong>Address:</strong> {{ item.single_line_address }}</div>{% endif %}
+									{% if item.phone %}<div><strong>Phone:</strong> {{ item.phone }}</div>{% endif %}
+									{% if item.email %}<div><strong>Email:</strong> <a href="mailto:{{ item.email }}">{{ item.email }}</a></div>{% endif %}
 								</div>
 								
 								<div class="Copy">

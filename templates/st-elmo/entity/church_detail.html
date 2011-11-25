@@ -9,7 +9,7 @@
 						<div class="Listing ListingDetail">
 							<div class="ListingResources">
 								<div class="image">
-									<img src="{% if item.heroshot %}{{ item.heroshot.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324">
+									<img src="{% if item.heroshot_full %}{{ item.heroshot_full.url }}{% else %}{{ MEDIA_URL }}img/business_no_photo.png{% endif %}" width="324">
 								</div>
 								<div class="context_options">
 									{% if item.google_maps_url %}<a href="{{ item.google_maps_url }}" class="context_button directions left" target="_blank"></a>{% endif %}

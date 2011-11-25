@@ -15,7 +15,7 @@
 								<div class="subtitle"><em>{{ business.tagline }}</em></div>
 								<div class="details">
 									<div><strong>Type:</strong> <a href="{{ business.business_type.get_absolute_url }}">{{ business.business_type }}</a></div>
-									{% if business.founded %}<div><strong>Founded:</strong> {{ business.founded }}</div>{% endif %}
+									{% if business.phone %}<div><strong>Phone:</strong> {{ business.phone }}</div>{% endif %}
 									<div><strong>Located:</strong> {% if business.readable_location %}{{ business.readable_location }}{% else %}{{ business.single_line_address }}{% endif %}</div>
 									{% if business.hours %}<div><strong>Hours:</strong> {{ business.hours }}</div>{% endif %}
 								</div>
@@ -24,6 +24,7 @@
 								<a href="{{ business.get_absolute_url }}" class="context_button learn_more"></a>
 								{% if business.google_maps_url %}<a href="{{ business.google_maps_url }}" class="context_button directions" target="_blank"></a>{% endif %}
 								{% if business.website %}<a href="{{ business.website }}" class="context_button website" target="_blank"></a>{% endif %}
+								{% if business.facebook %}<a href="{{ business.facebook }}" class="context_button facebook" target="_blank"></a>{% endif %}
 							</div>
 							<div class="clear"></div>
 						</div>

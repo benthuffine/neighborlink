@@ -15,7 +15,7 @@
 								<div class="subtitle"><em>{{ church.tagline }}</em></div>
 								<div class="details">
 									<div><strong>Denomination:</strong> <a href="{{ church.denomination.get_absolute_url }}">{{ church.denomination }}</a></div>
-									{% if church.founded %}<div><strong>Founded:</strong> {{ church.founded }}</div>{% endif %}
+									{% if church.phone %}<div><strong>Phone:</strong> {{ church.phone }}</div>{% endif %}
 									<div><strong>Located:</strong> {% if church.readable_location %}{{ church.readable_location }}{% else %}{{ church.single_line_address }}{% endif %}</div>
 									{% if church.hours %}<div><strong>Hours:</strong> {{ church.hours }}</div>{% endif %}
 								</div>
@@ -24,6 +24,7 @@
 								<a href="{{ church.get_absolute_url }}" class="context_button learn_more"></a>
 								{% if church.google_maps_url %}<a href="{{ church.google_maps_url }}" class="context_button directions" target="_blank"></a>{% endif %}
 								{% if church.website %}<a href="{{ church.website }}" class="context_button website" target="_blank"></a>{% endif %}
+								{% if church.facebook %}<a href="{{ church.facebook }}" class="context_button facebook" target="_blank"></a>{% endif %}
 							</div>
 							<div class="clear"></div>
 						</div>

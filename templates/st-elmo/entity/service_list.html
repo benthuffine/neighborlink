@@ -19,7 +19,7 @@
 										<a href="{{ type.get_absolute_url }}">{{ type.name }}</a>{% if not forloop.last %}, {% endif %}
 									{% endfor %}
 									</div>
-									{% if service.founded %}<div><strong>Founded:</strong> {{ service.founded }}</div>{% endif %}
+									{% if service.phone %}<div><strong>Phone:</strong> {{ service.phone }}</div>{% endif %}
 									<div><strong>Located:</strong> {% if service.readable_location %}{{ service.readable_location }}{% else %}{{ service.single_line_address }}{% endif %}</div>
 									{% if service.hours %}<div><strong>Hours:</strong> {{ service.hours }}</div>{% endif %}
 								</div>
@@ -28,6 +28,7 @@
 								<a href="{{ service.get_absolute_url }}" class="context_button learn_more"></a>
 								{% if service.google_maps_url %}<a href="{{ service.google_maps_url }}" class="context_button directions" target="_blank"></a>{% endif %}
 								{% if service.website %}<a href="{{ service.website }}" class="context_button website" target="_blank"></a>{% endif %}
+								{% if service.facebook %}<a href="{{ service.facebook }}" class="context_button facebook" target="_blank"></a>{% endif %}
 							</div>
 							<div class="clear"></div>
 						</div>

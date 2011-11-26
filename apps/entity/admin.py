@@ -119,7 +119,7 @@ class BusinessAdmin(EntityAdmin):
             'fields': ('name', 'slug', 'tagline', 'description', 'featurable', 'heroshot_full', 'heroshot_slim', 'business_type')
         }),
         ('External Links', {
-            'fields': ('website', 'facebook', 'twitter'),
+            'fields': ('website', 'facebook', 'twitter', 'urbanspoon'),
             'classes': ('collapse open',),
         }),
         ('Address Info', {

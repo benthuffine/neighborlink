@@ -762,6 +762,7 @@ a.context_button.urbanspoon:hover{
 	padding-right:20px;
 	overflow: hidden;
 	height: 110px;
+	margin-bottom: 2px;
 }
 .Listing .description_block{
 	float:left;

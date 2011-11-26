@@ -29,14 +29,15 @@ StElmo = {
 	 * Initializes the login lightbox. 
 	 */
 	initLogin : function(){
-		$(".loginLink").fancybox({
+		$(".loginLink.loggedout").fancybox({
 			href: '#LoginBox',
 			modal: true, 
 			scrolling: false, 
 			overlayColor: '#fff', 
 			overlayOpacity: 0.75
 		});
-		$('#fancybox-content .Close').live('click',function(){
+		$('#fancybox-content .Close').live('click',function(e){
+			e.preventDefault();
 			$.fancybox.close();
 		});
 	},

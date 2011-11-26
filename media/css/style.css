@@ -278,12 +278,12 @@ a.rss:hover{
 	float:left;
 }
 #LeftNavigation li{
-	padding-left:23px;
-	background:url("../img/bullet.png") no-repeat 10px 13px;
+	padding-left:32px;
+	background:url("../img/bullet.png") no-repeat 14px 13px;
 }
 #RightNavigation li{
-	padding-left:17px;
-	background:url("../img/bullet.png") no-repeat 6px 13px;
+	padding-left:34px;
+	background:url("../img/bullet.png") no-repeat 15px 13px;
 }
 #LeftNavigation li:first-child,
 #RightNavigation li:first-child{

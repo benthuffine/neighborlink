@@ -466,7 +466,7 @@ a.rss:hover{
 #FeaturedPanel .standard.last{
 	margin-left:3px;
 }
-#FeaturedPanel .Image{
+#FeaturedPanel .Image,{
 	margin-bottom:15px;
 	overflow: hidden;
 	height: 110px;
@@ -760,6 +760,8 @@ a.context_button.urbanspoon:hover{
 	float:left;
 	width:324px;
 	padding-right:20px;
+	overflow: hidden;
+	height: 110px;
 }
 .Listing .description_block{
 	float:left;

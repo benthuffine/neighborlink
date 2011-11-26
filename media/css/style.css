@@ -282,8 +282,8 @@ a.rss:hover{
 	background:url("../img/bullet.png") no-repeat 14px 13px;
 }
 #RightNavigation li{
-	padding-left:34px;
-	background:url("../img/bullet.png") no-repeat 15px 13px;
+	padding-left:32px;
+	background:url("../img/bullet.png") no-repeat 14px 13px;
 }
 #LeftNavigation li:first-child,
 #RightNavigation li:first-child{

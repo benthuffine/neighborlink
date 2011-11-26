@@ -672,6 +672,12 @@ a.context_button.website{
 a.context_button.website:hover{
 	background-position:right top;
 }
+a.context_button.urbanspoon{
+	background:url("../img/button_urbanspoon.png");
+}
+a.context_button.urbanspoon:hover{
+	background-position:right top;
+}
 
 /**
  * Page Layout

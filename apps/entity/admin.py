@@ -92,7 +92,8 @@ class ServiceAdmin(EntityAdmin):
             'classes': ('collapse open',),
         }),
         ('Miscellaneous', {
-            'fields': ('founded', 'owners',)
+            'fields': ('founded', 'owners',),
+            'classes': ('collapse open'),
         }),
         ('Advanced Features', {
             'fields': ('record_owners',),

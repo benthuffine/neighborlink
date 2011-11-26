@@ -132,6 +132,7 @@ class Church(Entity):
 
 class Service(Entity):
     service_type = models.ManyToManyField(ServiceType)
+    owners = models.CharField(max_length=1024, null=True, blank=True)
 
     def get_absolute_url(self):
         return '/services/%s/' % self.slug

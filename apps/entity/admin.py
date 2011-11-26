@@ -91,8 +91,8 @@ class ServiceAdmin(EntityAdmin):
             'fields': ('phone', 'email'),
             'classes': ('collapse open',),
         }),
-        (None, {
-            'fields': ('founded',)
+        ('Miscellaneous', {
+            'fields': ('founded', 'owners',)
         }),
         ('Advanced Features', {
             'fields': ('record_owners',),

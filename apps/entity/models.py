@@ -107,6 +107,7 @@ class Business(Entity):
     business_type = models.ForeignKey(BusinessType)
     features = models.CharField(max_length=1024, null=True, blank=True)
     owners = models.CharField(max_length=1024, null=True, blank=True)
+    urbanspoon = models.URLField(verify_exists=True, null=True, blank=True)
 
     def get_absolute_url(self):
         return '/businesses/%s/' % self.slug

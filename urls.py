@@ -41,8 +41,8 @@ urlpatterns += patterns('neighborlink.apps.content.views',
     (r'^about/$', 'about_list'),
     (r'^resources/(?P<slug>[\w-]+)/$', 'resource_detail'),
     (r'^resources/$', 'resource_list'),
-    (r'^neighborhood-association/$', 'neighborhood_association_list'),
-    (r'^neighborhood-association/(?P<slug>[\w-]+)/$', 'neighborhood_association_detail'),
+    (r'^community-association/$', 'community_association_list'),
+    (r'^community-association/(?P<slug>[\w-]+)/$', 'community_association_detail'),
 
     (r'^$', 'home'),
 )

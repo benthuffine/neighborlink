@@ -7,9 +7,30 @@ class PageInfo(models.Model):
     slug = models.SlugField(max_length=255)
     teaser = models.CharField(max_length=1024, null=True, blank=True)
     content = models.TextField(null=True, blank=True)
+    approved = models.BooleanField(default=False)
+    parent = models.ForeignKey('self', null=True, blank=True)
+    sort_order = models.IntegerField()
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        ordering = ('sort_order',)
+        permissions = (
+            ("can_approve_post", "Can approve post"),
+        )
+
+
+    def save(self, *args, **kwargs):
+        mode = self.__class__
+
+        if self.sort_order is None:
+            try:
+                last = model.objects.order_by('-sort_order')[0]
+                self.sort_order = last.sort_order + 1
+            except IndexError:
+                self.sort_order = 0
+        super(PageInfo, self).save(*args, **kwargs)
 
 class Page(PageInfo):
     pass    
@@ -36,10 +57,12 @@ class ResourcePage(PageInfo):
     def get_absolute_url(self):
         return '/resources/%s/' % self.slug
 
+    
+
 class CommunityAssocationPage(PageInfo):
     pass
     
-    def get_absolut_url(self):
+    def get_absolute_url(self):
         return '/community-association/%s/' % self.slug        
 
 class NewsEvent(PageInfo):
@@ -77,12 +100,14 @@ class NewsEvent(PageInfo):
         if start_date.year == end_date.year and start_date.month == end_date.month and start_date.day == end_date.day:
             #  Same day
             ds = start_date.strftime('%A, %B') + (" %s " % ds) + start_date.strftime('%Y') + " from"
+            
             if start_date.strftime('%p') == end_date.strftime('%p'):
                 ds = "%s %d to %d %s" % (ds, int(start_date.strftime('%I')), int(end_date.strftime('%I')), start_date.strftime('%p'))
             else:
-                ds = "%s %d %s to %d %s" % (ds, int(start_date.strftime('%I')), int(start_date.strftime('%p')), end_date.strftime('%I'), end_date.strftime('%p'))
+                ds = "%s %d %s to %d %s" % (ds, int(start_date.strftime('%I')), start_date.strftime('%p'), int(end_date.strftime('%I')), end_date.strftime('%p'))
         else:
             ds = start_date.strftime('%A, %B') + " until " + end_date.strftime('%A, %B')
+
         return ds
         
     date_string = property(get_date_string)    

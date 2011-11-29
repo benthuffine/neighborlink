@@ -7,9 +7,30 @@ class PageInfo(models.Model):
     slug = models.SlugField(max_length=255)
     teaser = models.CharField(max_length=1024, null=True, blank=True)
     content = models.TextField(null=True, blank=True)
+    approved = models.BooleanField(default=False)
+    parent = models.ForeignKey('self', null=True, blank=True)
+    sort_order = models.IntegerField()
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        ordering = ('sort_order',)
+        permissions = (
+            ("can_approve_post", "Can approve post"),
+        )
+
+
+    def save(self, *args, **kwargs):
+        mode = self.__class__
+
+        if self.sort_order is None:
+            try:
+                last = model.objects.order_by('-sort_order')[0]
+                self.sort_order = last.sort_order + 1
+            except IndexError:
+                self.sort_order = 0
+        super(PageInfo, self).save(*args, **kwargs)
 
 class Page(PageInfo):
     pass    
@@ -35,6 +56,8 @@ class ResourcePage(PageInfo):
 
     def get_absolute_url(self):
         return '/resources/%s/' % self.slug
+
+    
 
 class CommunityAssocationPage(PageInfo):
     pass

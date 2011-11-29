@@ -39,7 +39,7 @@ class ResourcePage(PageInfo):
 class CommunityAssocationPage(PageInfo):
     pass
     
-    def get_absolut_url(self):
+    def get_absolute_url(self):
         return '/community-association/%s/' % self.slug        
 
 class NewsEvent(PageInfo):

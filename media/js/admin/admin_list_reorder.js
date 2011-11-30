@@ -20,8 +20,8 @@ django.jQuery(document).ready(function() {
 
 	header = django.jQuery('.changelist-results thead tr').children()[pos_col]
 	//django.jQuery(header).hide();
-	django.jQuery(header).css('width', '1em');
-	django.jQuery(header).children('a').text('#');
+	//django.jQuery(header).css('width', '1em');
+	//django.jQuery(header).children('a').text('#');
 
 	django.jQuery('.changelist-results tbody tr').each(function(index) {
 		pos_td = django.jQuery(this).children()[pos_col];

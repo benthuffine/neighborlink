@@ -36,7 +36,7 @@ class BetterApi(Api):
 		data = self._ParseAndCheckTwitter(json)
 		return data
 
-def update_twitter(title, url):
+def update_twitter(title, teaser, url):
 	api = BetterApi(consumer_key=settings.TWITTER_CONSUMER_KEY,
 					consumer_secret=settings.TWITTER_CONSUMER_SECRET,
 					access_token_key=settings.TWITTER_ACCESS_TOKEN_KEY,
@@ -47,9 +47,11 @@ def update_twitter(title, url):
 
 	#	Trim the status back to CHARACTER_LIMIT - short_url_length - 1 (for space between)
 	status_length = CHARACTER_LIMIT - short_url_length - 1
-	title = title[:status_length]
+	status = "%s: %s" % (title, teaser)
 
-	status = '%s %s' % (title, url)
+	status = status[:status_length]
+
+	status = '%s %s' % (status, url)
 	
 	try:
 		status = api.BetterPostUpdate(status, data={'wrap_links': True})
@@ -69,7 +71,7 @@ def social_updates(instance, created):
 		teaser = instance.teaser and instance.teaser or truncate_html_words(instance.content, 40)
 		url = 'http://%s%s' % (site.domain, instance.get_absolute_url())
 
-		update_twitter(title, url)
+		update_twitter(title, teaser, url)
 		update_facebook(title, teaser, url)
 
 @receiver(post_save, sender=AboutPage)

@@ -19,19 +19,19 @@ django.jQuery(document).ready(function() {
 	}
 
 	header = django.jQuery('.changelist-results thead tr').children()[pos_col]
-	django.jQuery(header).hide();
+	//django.jQuery(header).hide();
 	//django.jQuery(header).css('width', '1em');
 	//django.jQuery(header).children('a').text('#');
 
 	django.jQuery('.changelist-results tbody tr').each(function(index) {
 		pos_td = django.jQuery(this).children()[pos_col];
-		django.jQuery(pos_td).hide();
-		/*pos_td = django.jQuery(this).children()[pos_col];
+		//django.jQuery(pos_td).hide();
+		pos_td = django.jQuery(this).children()[pos_col];
 		input = django.jQuery(pos_td).children('input').first();
 		input.hide();
 
 		label = django.jQuery('<strong>' + input.attr('value') + '</strong>');
-		django.jQuery(pos_td).append(label);*/
+		django.jQuery(pos_td).append(label);
 	});
 
 	sorted = django.jQuery('.changelist-results thead th.sorted');

@@ -133,7 +133,7 @@ class ChurchAdmin(EntityAdmin):
                 if obj.approved:
                     #   If we have a parent then we're approving the child object
                     #   Save all of the child fields to the parent
-                    obj.slug = "%s_temp" % obj.parent.slug
+                    obj.slug = "%s-temp" % obj.parent.slug
                     for field in fields:
                         setattr(obj.parent, field, getattr(obj, field))
                     obj.parent.approved = True
@@ -142,18 +142,21 @@ class ChurchAdmin(EntityAdmin):
                     obj.save()
             else:
                 #   if we don't have a parent then we are the parent, make sure we have a child
+                field_vals = {}
+                for field in fields:
+                    field_vals[field] = getattr(obj, field)
+                field_vals['parent'] = obj
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
                 try:
                     child = Church.objects.get(parent=obj)
+                    for field in field_vals.keys():
+                        setattr(child, field, field_vals[field])
                 except Church.DoesNotExist:
-                    field_vals = {}
-                    for field in fields:
-                        field_vals[field] = getattr(obj, field)
-                    field_vals['parent'] = obj
-                    field_vals['approved'] = False
-                    field_vals['slug'] = '%s_temp' % obj.slug
                     child = Church.objects.create(**field_vals)
-                    child.record_owners = obj.record_owners.all()
-                    child.save()
+                child.record_owners = obj.record_owners.all()
+                child.save()
+
 
     def delete_model(self, request, obj):
         #   Delete both the parent and the child
@@ -256,7 +259,7 @@ class ServiceAdmin(EntityAdmin):
                 if obj.approved:
                     #   If we have a parent then we're approving the child object
                     #   Save all of the child fields to the parent
-                    obj.slug = "%s_temp" % obj.parent.slug
+                    obj.slug = "%s-temp" % obj.parent.slug
                     for field in fields:
                         setattr(obj.parent, field, getattr(obj, field))
                     obj.parent.service_type = obj.service_type.all()
@@ -269,16 +272,18 @@ class ServiceAdmin(EntityAdmin):
                 field_vals = {}
                 for field in fields:
                     field_vals[field] = getattr(obj, field)
+                field_vals['parent'] = obj
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
                 try:
                     child = Service.objects.get(parent=obj)
+                    for field in field_vals.keys():
+                        setattr(child, field, field_vals[field])
                 except Service.DoesNotExist:
-                    field_vals['parent'] = obj
-                    field_vals['approved'] = False
-                    field_vals['slug'] = '%s_temp' % obj.slug
                     child = Service.objects.create(**field_vals)
-                    child.record_owners = obj.record_owners.all()
-                    child.service_type = obj.service_type.all()
-                    child.save()
+                child.record_owners = obj.record_owners.all()
+                child.service_type = obj.service_type.all()
+                child.save()
 
     def delete_model(self, request, obj):
         #   Delete both the parent and the child
@@ -390,9 +395,8 @@ class BusinessAdmin(EntityAdmin):
                 if obj.approved:
                     #   If we have a parent then we're approving the child object
                     #   Save all of the child fields to the parent
-                    obj.slug = "%s_temp" % obj.parent.slug
+                    obj.slug = "%s-temp" % obj.parent.slug
                     for field in fields:
-
                         setattr(obj.parent, field, getattr(obj, field))
                     obj.parent.approved = True
                     obj.parent.save()
@@ -403,15 +407,17 @@ class BusinessAdmin(EntityAdmin):
                 field_vals = {}
                 for field in fields:
                     field_vals[field] = getattr(obj, field)
+                field_vals['parent'] = obj
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
                 try:
                     child = Business.objects.get(parent=obj)
+                    for field in field_vals.keys():
+                        setattr(child, field, field_vals[field])
                 except Business.DoesNotExist:
-                    field_vals['parent'] = obj
-                    field_vals['approved'] = False
-                    field_vals['slug'] = '%s_temp' % obj.slug
                     child = Business.objects.create(**field_vals)
-                    child.record_owners = obj.record_owners.all()
-                    child.save()
+                child.record_owners = obj.record_owners.all()
+                child.save()
                 
     def delete_model(self, request, obj):
         #   Delete both the parent and the child

@@ -78,7 +78,7 @@ def newsevent_detail(request, slug):
 def about_list(request):
     slug = 'about'
     contentpage = get_object_or_404(Page, slug__exact=slug)
-    about_list = AboutPage.objects.filter(approved=True).order_by('-insert_date')
+    about_list = AboutPage.objects.filter(approved=True).order_by('sort_order')
 
     context = page_list(request, contentpage, about_list, slug)
 
@@ -86,7 +86,7 @@ def about_list(request):
 
 def about_detail(request, slug):
     about = get_object_or_404(AboutPage, slug__exact=slug, approved=True)
-    recent_entries = AboutPage.objects.filter(approved=True).order_by('-insert_date')[:6]
+    recent_entries = AboutPage.objects.filter(approved=True).order_by('sort_order')[:6]
 
     context = page_detail(request, about, recent_entries, 'about')
 
@@ -95,7 +95,7 @@ def about_detail(request, slug):
 def resource_list(request):
     slug = 'resources'
     contentpage = get_object_or_404(Page, slug__exact=slug)
-    resource_list = ResourcePage.objects.filter(approved=True).order_by('-insert_date')
+    resource_list = ResourcePage.objects.filter(approved=True).order_by('sort_order')
 
     context = page_list(request, contentpage, resource_list, slug)
 
@@ -103,7 +103,7 @@ def resource_list(request):
 
 def resource_detail(request, slug):
     resource = get_object_or_404(ResourcePage, slug__exact=slug, approved=True)
-    recent_entries = ResourcePage.objects.filter(approved=True).order_by('-insert_date')[:6]
+    recent_entries = ResourcePage.objects.filter(approved=True).order_by('sort_order')[:6]
 
     context = page_detail(request, resource, recent_entries, 'resources')
 
@@ -112,7 +112,7 @@ def resource_detail(request, slug):
 def community_association_list(request):
     slug = 'community-association'
     contentpage = get_object_or_404(Page, slug__exact=slug)
-    community_association_list = CommunityAssocationPage.objects.filter(approved=True).order_by('-insert_date')
+    community_association_list = CommunityAssocationPage.objects.filter(approved=True).order_by('sort_order')
 
     context = page_list(request, contentpage, community_association_list, slug)
 
@@ -120,7 +120,7 @@ def community_association_list(request):
 
 def community_association_detail(request, slug):
     community_association_page = get_object_or_404(CommunityAssocationPage, slug__exact=slug, approved=True)
-    recent_entries = CommunityAssocationPage.objects.filter(approved=True).order_by('-insert_date')[:6]
+    recent_entries = CommunityAssocationPage.objects.filter(approved=True).order_by('sort_order')[:6]
 
     context = page_detail(request, community_association_page, recent_entries, 'community-association')
 

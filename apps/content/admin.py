@@ -82,7 +82,7 @@ class PageAdmin(admin.ModelAdmin):
                 if obj.approved:
                     #   If we have a parent then we're approving the child object
                     #   Save all of the child fields to the parent
-                    obj.slug = "%s_temp" % obj.parent.slug
+                    obj.slug = "%s-temp" % obj.parent.slug
                     for field in fields:
                         setattr(obj.parent, field, getattr(obj, field))
                     obj.parent.approved = True
@@ -91,17 +91,20 @@ class PageAdmin(admin.ModelAdmin):
                     obj.save()
             else:
                 #   if we don't have a parent then we are the parent, make sure we have a child
+                field_vals = {}
+                for field in field:
+                    field_vals[field] = getattr(obj, field)
+                field_vals['parent'] = obj
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s_temp' % obj.slug
                 try:
                     child = model.objects.get(parent=obj)
-                except model.DoesNotExist:
-                    field_vals = {}
-                    for field in fields:
-                        field_vals[field] = getattr(obj, field)
-                    field_vals['parent'] = obj
-                    field_vals['approved'] = False
-                    field_vals['slug'] = '%s_temp' % obj.slug
-                    child = model.objects.create(**field_vals)
+                    for field in field_vals.keys():
+                        setattr(child, field, field_vals[field])
                     child.save()
+                except model.DoesNotExist:
+                    child = model.objects.create(**field_vals)
+                    
 
     def delete_model(self, request, obj):
         #   Delete both the parent and the child

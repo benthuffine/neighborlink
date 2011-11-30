@@ -940,7 +940,11 @@ a.context_button.urbanspoon:hover{
 	float:right;
 	text-transform:uppercase;
 }
-
+#Footer .attribution{
+	padding: 8px;
+	text-align: center;
+	font-style: italic;
+}
 
 
 

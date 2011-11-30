@@ -57,7 +57,7 @@ def page_detail(request, item, recent_entries, slug):
 
 def newsevent_list(request):
     slug = 'news-and-events'
-    contentpage = get_object_or_404(Page, slug__exact=slug)
+    contentpage = get_object_or_404(Page, slug__exact=slug, approved=True)
     events_list = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now(), approved=True).order_by('start_date', 'event_start_date')
 
     context = page_list(request, contentpage, events_list, slug)
@@ -65,7 +65,7 @@ def newsevent_list(request):
     return render_to_response('content/newsevent_list.html', {}, context_instance=context)
 
 def newsevent_detail(request, slug):
-    event = get_object_or_404(NewsEvent, slug__exact=slug, approved=True)
+    event = get_object_or_404(NewsEvent, slug__exact=slug)
     if event.start_date >= datetime.now().date() or event.end_date <= datetime.now().date():
         raise Http404('Page Not Found')
 
@@ -77,7 +77,7 @@ def newsevent_detail(request, slug):
 
 def about_list(request):
     slug = 'about'
-    contentpage = get_object_or_404(Page, slug__exact=slug)
+    contentpage = get_object_or_404(Page, slug__exact=slug, approved=True)
     about_list = AboutPage.objects.filter(approved=True).order_by('sort_order')
 
     context = page_list(request, contentpage, about_list, slug)
@@ -85,7 +85,7 @@ def about_list(request):
     return render_to_response('content/about_list.html', {}, context_instance=context)
 
 def about_detail(request, slug):
-    about = get_object_or_404(AboutPage, slug__exact=slug, approved=True)
+    about = get_object_or_404(AboutPage, slug__exact=slug)
     recent_entries = AboutPage.objects.filter(approved=True).order_by('sort_order')[:6]
 
     context = page_detail(request, about, recent_entries, 'about')
@@ -94,7 +94,7 @@ def about_detail(request, slug):
 
 def resource_list(request):
     slug = 'resources'
-    contentpage = get_object_or_404(Page, slug__exact=slug)
+    contentpage = get_object_or_404(Page, slug__exact=slug, approved=True)
     resource_list = ResourcePage.objects.filter(approved=True).order_by('sort_order')
 
     context = page_list(request, contentpage, resource_list, slug)
@@ -102,7 +102,7 @@ def resource_list(request):
     return render_to_response('content/resource_list.html', {}, context_instance=context)
 
 def resource_detail(request, slug):
-    resource = get_object_or_404(ResourcePage, slug__exact=slug, approved=True)
+    resource = get_object_or_404(ResourcePage, slug__exact=slug)
     recent_entries = ResourcePage.objects.filter(approved=True).order_by('sort_order')[:6]
 
     context = page_detail(request, resource, recent_entries, 'resources')
@@ -111,7 +111,7 @@ def resource_detail(request, slug):
 
 def community_association_list(request):
     slug = 'community-association'
-    contentpage = get_object_or_404(Page, slug__exact=slug)
+    contentpage = get_object_or_404(Page, slug__exact=slug, approved=True)
     community_association_list = CommunityAssocationPage.objects.filter(approved=True).order_by('sort_order')
 
     context = page_list(request, contentpage, community_association_list, slug)
@@ -119,7 +119,7 @@ def community_association_list(request):
     return render_to_response('content/community_association_list.html', {}, context_instance=context)
 
 def community_association_detail(request, slug):
-    community_association_page = get_object_or_404(CommunityAssocationPage, slug__exact=slug, approved=True)
+    community_association_page = get_object_or_404(CommunityAssocationPage, slug__exact=slug)
     recent_entries = CommunityAssocationPage.objects.filter(approved=True).order_by('sort_order')[:6]
 
     context = page_detail(request, community_association_page, recent_entries, 'community-association')

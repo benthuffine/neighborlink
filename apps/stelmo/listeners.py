@@ -62,13 +62,15 @@ def update_facebook(title, teaser, url):
 	#print 'update facebook: %s %s %s' % (title, teaser, url)
 
 def social_updates(instance, created):
-	site = Site.objects.get_current()
-	title = instance.title
-	teaser = instance.teaser and instance.teaser or truncate_html_words(instance.content, 40)
-	url = 'http://%s/%s' % (site.domain, instance.get_absolute_url())
+	#	Only post parent page
+	if not instance.parent:
+		site = Site.objects.get_current()
+		title = instance.title
+		teaser = instance.teaser and instance.teaser or truncate_html_words(instance.content, 40)
+		url = 'http://%s%s' % (site.domain, instance.get_absolute_url())
 
-	update_twitter(title, url)
-	update_facebook(title, teaser, url)
+		update_twitter(title, url)
+		update_facebook(title, teaser, url)
 
 @receiver(post_save, sender=AboutPage)
 def about_social_updates(sender, instance, created, **kwargs):

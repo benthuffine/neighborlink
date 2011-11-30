@@ -545,6 +545,7 @@ h3 a:hover,
 	color: #2f1900;
 	margin-bottom:4px;
 	font-size: 13px;
+	line-height: 1.3em;
 }
 #FeaturedPanel .excerpt,
 .span_content .excerpt{

@@ -12,7 +12,7 @@ def home(request):
     from neighborlink.apps.entity.models import Featured, Business
 
     contentpage = get_object_or_404(Page, slug__exact='home')
-    recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now(), approved=True).order_by('start_date', 'event_start_date')[:2]
+    recent_events = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now(), approved=True).order_by('-start_date', '-event_start_date')[:2]
 
     featured_business = Featured.objects.filter(entity__approved=True).order_by('-date_featured')
     if not featured_business:
@@ -58,7 +58,7 @@ def page_detail(request, item, recent_entries, slug):
 def newsevent_list(request):
     slug = 'news-and-events'
     contentpage = get_object_or_404(Page, slug__exact=slug, approved=True)
-    events_list = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now(), approved=True).order_by('start_date', 'event_start_date')
+    events_list = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now(), approved=True).order_by('-start_date', '-event_start_date')
 
     context = page_list(request, contentpage, events_list, slug)
 

@@ -51,7 +51,7 @@ def business_list(request):
     return render_to_response('entity/business_list.html', {}, context_instance=context)
 
 def business_detail(request, slug):
-    business = get_object_or_404(Business, slug__exact=slug, approved=True)
+    business = get_object_or_404(Business, slug__exact=slug)
     business_list = Business.objects.filter(approved=True).order_by('name')
 
     context = page_detail(request, business, business_list, slug)
@@ -71,7 +71,7 @@ def church_list(request):
     return render_to_response('entity/church_list.html', {}, context_instance=context)
 
 def church_detail(request, slug):
-    church = get_object_or_404(Church, slug__exact=slug, approved=True)
+    church = get_object_or_404(Church, slug__exact=slug)
     church_list = Church.objects.filter(approved=True).order_by('name')
 
     context = page_detail(request, church, church_list, slug)
@@ -91,7 +91,7 @@ def service_list(request):
     return render_to_response('entity/service_list.html', {}, context_instance=context)
 
 def service_detail(request, slug):
-    service = get_object_or_404(Service, slug__exact=slug, approved=True)
+    service = get_object_or_404(Service, slug__exact=slug)
     services_list = Service.objects.filter(approved=True).order_by('name')
 
     context = page_detail(request, service, services_list, slug)

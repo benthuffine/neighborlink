@@ -92,7 +92,7 @@ class PageAdmin(admin.ModelAdmin):
             else:
                 #   if we don't have a parent then we are the parent, make sure we have a child
                 field_vals = {}
-                for field in field:
+                for field in fields:
                     field_vals[field] = getattr(obj, field)
                 field_vals['parent'] = obj
                 field_vals['approved'] = False

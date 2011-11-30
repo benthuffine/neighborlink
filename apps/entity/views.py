@@ -47,7 +47,8 @@ def business_list(request):
         business_list = business_list.filter(business_type__slug__exact=request.GET.get('type'))
 
     context = page_list(request, contentpage, business_list, slug, per_page=6)
-
+    context.update({'type': request.GET.get('type')})
+    
     return render_to_response('entity/business_list.html', {}, context_instance=context)
 
 def business_detail(request, slug):
@@ -67,6 +68,7 @@ def church_list(request):
         church_list = church_list.filter(denomination__slug__exact=request.GET.get('denomination'))
 
     context = page_list(request, contentpage, church_list, slug, per_page=6)
+    context.update({'denomination': request.GET.get('denomination')})
 
     return render_to_response('entity/church_list.html', {}, context_instance=context)
 
@@ -87,6 +89,7 @@ def service_list(request):
         services_list = services_list.filter(service_type__slug__exact=request.GET.get('type'))
 
     context = page_list(request, contentpage, services_list, slug, per_page=6)
+    context.update({'type': request.GET.get('type')})
 
     return render_to_response('entity/service_list.html', {}, context_instance=context)
 

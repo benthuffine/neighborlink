@@ -756,7 +756,7 @@ a.context_button.urbanspoon:hover{
 	margin-bottom:15px;
 }
 
-.Listing .image{
+.Listing > .image{
 	float:left;
 	width:324px;
 	padding-right:20px;

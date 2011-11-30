@@ -1,7 +1,8 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.sites.models import Site
-from django.utils.text import truncate_html_words
+from django.utils.text import truncate_words
+from django.utils.html import strip_tags
 from django.conf import settings
 from neighborlink.apps.content.models import *
 from twitter import Api, TwitterError, CHARACTER_LIMIT, Status
@@ -56,6 +57,7 @@ def update_twitter(title, teaser, url):
 	try:
 		status = api.BetterPostUpdate(status, data={'wrap_links': True})
 	except TwitterError:
+		print status
 		pass
 	
 
@@ -65,10 +67,10 @@ def update_facebook(title, teaser, url):
 
 def social_updates(instance, created):
 	#	Only post parent page
-	if not instance.parent:
+	if not instance.parent and instance.approved:
 		site = Site.objects.get_current()
 		title = instance.title
-		teaser = instance.teaser and instance.teaser or truncate_html_words(instance.content, 40)
+		teaser = instance.teaser and instance.teaser or truncate_words(strip_tags(instance.content), 40)
 		url = 'http://%s%s' % (site.domain, instance.get_absolute_url())
 
 		update_twitter(title, teaser, url)

@@ -96,7 +96,7 @@ class PageAdmin(admin.ModelAdmin):
                     field_vals[field] = getattr(obj, field)
                 field_vals['parent'] = obj
                 field_vals['approved'] = False
-                field_vals['slug'] = '%s_temp' % obj.slug
+                field_vals['slug'] = '%s-temp' % obj.slug
                 try:
                     child = model.objects.get(parent=obj)
                     for field in field_vals.keys():

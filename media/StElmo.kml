@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+  <name>St. Elmo</name>
+  <description><![CDATA[]]></description>
+  <Style id="style12">
+    <LineStyle>
+      <color>40000000</color>
+      <width>3</width>
+    </LineStyle>
+    <PolyStyle>
+      <color>73FF0000</color>
+      <fill>1</fill>
+      <outline>1</outline>
+    </PolyStyle>
+  </Style>
+  <Placemark>
+    <name>Community Association of Historic St. Elmo</name>
+    <description><![CDATA[]]></description>
+    <styleUrl>#style12</styleUrl>
+    <Polygon>
+      <outerBoundaryIs>
+        <LinearRing>
+          <tessellate>1</tessellate>
+          <coordinates>
+            -85.328323,35.013725,0.000000
+            -85.329140,35.013443,0.000000
+            -85.329636,35.013477,0.000000
+            -85.331718,35.014198,0.000000
+            -85.331909,35.013107,0.000000
+            -85.331909,35.012669,0.000000
+            -85.332039,35.010597,0.000000
+            -85.332809,35.009487,0.000000
+            -85.331932,35.004269,0.000000
+            -85.332855,34.996098,0.000000
+            -85.338112,34.987183,0.000000
+            -85.338074,34.983807,0.000000
+            -85.324898,34.984089,0.000000
+            -85.322578,34.995514,0.000000
+            -85.325928,35.006237,0.000000
+            -85.323311,35.011826,0.000000
+            -85.325966,35.012917,0.000000
+            -85.327728,35.013901,0.000000
+            -85.328323,35.013725,0.000000
+          </coordinates>
+        </LinearRing>
+      </outerBoundaryIs>
+    </Polygon>
+  </Placemark>
+</Document>
+</kml>

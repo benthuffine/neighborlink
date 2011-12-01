@@ -758,6 +758,9 @@ a.context_button.urbanspoon:hover{
 	float:right;
 	padding:5px 0 10px 17px;
 }
+#PageContent .Copy ul{
+	list-style: circle inside none;
+}
 
 #PageContent .Listing {
 	border-bottom:2px solid #f1efe8;

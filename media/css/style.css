@@ -629,6 +629,14 @@ h3 a:hover,
 .SocialSidebar a.craigslist:hover{
 	background-position:right -160px;
 }
+#SocialPanel a.wikipedia,
+.SocialSidebar a.wikipedia{
+	background-position:left -200px;
+}
+#SocialPanel a.wikipedia:hover,
+.SocialSidebar a.wikipedia:hover{
+	background-position:right -200px;
+}
 
 a.context_button{
 	float:left;

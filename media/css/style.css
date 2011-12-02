@@ -337,6 +337,10 @@ a.rss:hover{
  * Pagination
  */
 
+ .pagination {
+ 	padding-bottom: 10px;
+ }
+
 .pagination .previous,
 .pagination .next{
 	display:block;

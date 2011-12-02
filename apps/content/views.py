@@ -69,7 +69,7 @@ def newsevent_detail(request, slug):
     if event.start_date > datetime.now().date() or event.end_date < datetime.now().date():
         raise Http404('Page Not Found')
 
-    recent_entries = NewsEvent.objects.filter(approved=True).order_by('start_date', 'event_start_date')[:6]
+    recent_entries = NewsEvent.objects.filter(start_date__lte=datetime.now(), end_date__gte=datetime.now(), approved=True).exclude(slug__exact=slug).order_by('start_date', 'event_start_date')[:6]
 
     context = page_detail(request, event, recent_entries, 'news-and-events')
 
@@ -86,7 +86,7 @@ def about_list(request):
 
 def about_detail(request, slug):
     about = get_object_or_404(AboutPage, slug__exact=slug)
-    recent_entries = AboutPage.objects.filter(approved=True).order_by('sort_order')[:6]
+    recent_entries = AboutPage.objects.filter(approved=True).exclude(slug__exact=slug).order_by('sort_order')[:6]
 
     context = page_detail(request, about, recent_entries, 'about')
 
@@ -103,7 +103,7 @@ def resource_list(request):
 
 def resource_detail(request, slug):
     resource = get_object_or_404(ResourcePage, slug__exact=slug)
-    recent_entries = ResourcePage.objects.filter(approved=True).order_by('sort_order')[:6]
+    recent_entries = ResourcePage.objects.filter(approved=True).exclude(slug__exact=slug).order_by('sort_order')[:6]
 
     context = page_detail(request, resource, recent_entries, 'resources')
 
@@ -120,7 +120,7 @@ def community_association_list(request):
 
 def community_association_detail(request, slug):
     community_association_page = get_object_or_404(CommunityAssocationPage, slug__exact=slug)
-    recent_entries = CommunityAssocationPage.objects.filter(approved=True).order_by('sort_order')[:6]
+    recent_entries = CommunityAssocationPage.objects.filter(approved=True).exclude(slug__exact=slug).order_by('sort_order')[:6]
 
     context = page_detail(request, community_association_page, recent_entries, 'community-association')
 

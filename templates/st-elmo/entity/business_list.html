@@ -5,6 +5,15 @@
 					<div id="HeroImage"><img src='{{ MEDIA_URL }}{{ contentpage.heroshot_set.all.0.image|default:"/img/demo/hero_diner.png" }}' height="201" width="958"></div> 
 					<div id="PageContent">
 						<h1>Businesses</h1>
+						<div class="pagination">
+						{% if items.has_previous %}
+							<a href="?page={{ items.previous_page_number }}{% if type %}&type={{ type }}{% endif %}" class="previous">&lt; previous</a>
+						{% endif %}
+						{% if items.has_next %}
+							<a href="?page={{ items.next_page_number }}{% if type %}&type={{ type }}{% endif %}" class="next">next &gt;</a>
+						{% endif %}
+							<div class="clear"></div>
+						</div>
 					{% for business in items.object_list %}
 						<div class="Listing">
 							<div class="image">

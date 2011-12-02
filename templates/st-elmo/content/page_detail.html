@@ -10,6 +10,7 @@
 						</div>
 					</div>
 				</div>
+	{% block sidebar %}				
 				<div id="SideNavigation">
 					<div class="Widget LinkList">
 						<div class="Header">Recent Entries<a href="{{ slug }}/feed/" class="more rss"></a></div>
@@ -38,5 +39,6 @@
 							<input type="submit" value="Join" class="button submit">
 						</form>
 					</div>
-				</div>						
+				</div>	
+	{% endblock sidebar %}					
 {% endblock content %}

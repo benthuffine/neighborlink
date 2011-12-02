@@ -67,7 +67,7 @@ def update_facebook(title, teaser, url):
 
 def social_updates(instance, created):
 	#	Only post parent page
-	if not instance.parent and instance.approved:
+	if not instance.parent and instance.approved and created:
 		site = Site.objects.get_current()
 		title = instance.title
 		teaser = instance.teaser and instance.teaser or truncate_words(strip_tags(instance.content), 40)

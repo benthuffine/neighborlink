@@ -1,1 +1,29 @@
 {% extends "content/page_detail.html" %}
+
+{% block content %}
+  {{ block.super }}
+{% endblock content %}
+
+{% block sidebar %}
+				<div id="SideNavigation">
+					<div class="Widget LinkList">
+						<div class="Header">Recent Entries<a href="{{ slug }}/feed/" class="more rss"></a></div>
+						<div class="Links">
+						{% for entry in recent_entries %}
+							<a href="{{ entry.get_absolute_url }}"{% ifequal entry.get_absolute_url request.get_full_path %} class="selected"{% endifequal %}>
+								{{ entry.title }}<br>
+							</a>
+						{% endfor %}
+						</div>
+					</div>
+					
+					<div class="Widget NewsletterForm">
+						<div class="teaser archbi">want to stay in the loop?</div>
+						<div class="calltoaction archb">join the Neighborhood Email List</div>
+						<form action="/http://lists.st-elmo.org/mailman/subscribe/neighbors" method="post">
+							<input type="text" value="" title="email address" class="email input" name="email">
+							<input type="submit" value="Join" class="button submit">
+						</form>
+					</div>
+				</div>	
+{% endblock sidebar %}

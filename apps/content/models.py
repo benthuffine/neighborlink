@@ -20,6 +20,17 @@ class PageInfo(models.Model):
             ("can_approve_post", "Can approve post"),
         )
 
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        model = self.__class__
+
+        if self.slug:
+            try:
+                model.objects.exclude(pk=self.pk).get(slug__exact=self.slug)
+                raise ValidationError('This slug has already been used.')
+            except model.DoesNotExist:
+                pass
+
 
     def save(self, *args, **kwargs):
         mode = self.__class__

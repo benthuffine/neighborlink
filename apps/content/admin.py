@@ -104,6 +104,17 @@ class PageAdmin(admin.ModelAdmin):
                     child.save()
                 except model.DoesNotExist:
                     child = model.objects.create(**field_vals)
+        else:
+            if not obj.parent:
+                #   if we don't have a parent we need to create it
+                field_vals = {}
+                for field in fields:
+                    field_vals[field] = getattr(obj, field)
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
+                parent = model.objects.create(**field_vals)
+                obj.parent = parent
+                obj.save()
                     
 
     def delete_model(self, request, obj):

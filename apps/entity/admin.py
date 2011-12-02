@@ -156,6 +156,17 @@ class ChurchAdmin(EntityAdmin):
                     child = Church.objects.create(**field_vals)
                 child.record_owners = obj.record_owners.all()
                 child.save()
+        else:
+            if not obj.parent:
+                #   if we don't have a parent we need to create it
+                field_vals = {}
+                for field in fields:
+                    field_vals[field] = getattr(obj, field)
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
+                parent = model.objects.create(**field_vals)
+                obj.parent = parent
+                obj.save()                
 
 
     def delete_model(self, request, obj):
@@ -284,6 +295,17 @@ class ServiceAdmin(EntityAdmin):
                 child.record_owners = obj.record_owners.all()
                 child.service_type = obj.service_type.all()
                 child.save()
+        else:
+            if not obj.parent:
+                #   if we don't have a parent we need to create it
+                field_vals = {}
+                for field in fields:
+                    field_vals[field] = getattr(obj, field)
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
+                parent = model.objects.create(**field_vals)
+                obj.parent = parent
+                obj.save()                
 
     def delete_model(self, request, obj):
         #   Delete both the parent and the child
@@ -418,6 +440,17 @@ class BusinessAdmin(EntityAdmin):
                     child = Business.objects.create(**field_vals)
                 child.record_owners = obj.record_owners.all()
                 child.save()
+        else:
+            if not obj.parent:
+                #   if we don't have a parent we need to create it
+                field_vals = {}
+                for field in fields:
+                    field_vals[field] = getattr(obj, field)
+                field_vals['approved'] = False
+                field_vals['slug'] = '%s-temp' % obj.slug
+                parent = model.objects.create(**field_vals)
+                obj.parent = parent
+                obj.save()                
                 
     def delete_model(self, request, obj):
         #   Delete both the parent and the child

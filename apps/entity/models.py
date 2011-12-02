@@ -22,8 +22,8 @@ class Entity(models.Model):
     featurable = models.BooleanField(default=False)
     readable_location = models.CharField(max_length=2046, null=True, blank=True)
     record_owners = models.ManyToManyField(User, null=True, blank=True)
-    heroshot_full = models.ImageField(upload_to='heroes', null=True, blank=True)
-    heroshot_slim = models.ImageField(upload_to='heroes', null=True, blank=True)
+    heroshot_full = models.ImageField(upload_to='ext/heroshots/entity', null=True, blank=True)
+    heroshot_slim = models.ImageField(upload_to='ext/heroshots/entity', null=True, blank=True)
     approved = models.BooleanField(default=False)
     parent = models.ForeignKey('self', null=True, blank=True)
 

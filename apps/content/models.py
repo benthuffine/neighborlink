@@ -47,7 +47,7 @@ class Page(PageInfo):
     pass    
 
 class Heroshot(models.Model):
-    image = models.ImageField(upload_to='ext/heroshots')
+    image = models.ImageField(upload_to='ext/heroshots/content')
     description = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=255,blank=True)
     sort_order = models.PositiveIntegerField(null=True, blank=True)

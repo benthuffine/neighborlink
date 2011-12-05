@@ -30,7 +30,7 @@ StElmo = {
 	 */
 	initLogin : function(){
 		$(".loginLink.loggedout").fancybox({
-			href: '#LoginBox',
+			href: '/login/',
 			modal: true, 
 			scrolling: false, 
 			overlayColor: '#fff', 

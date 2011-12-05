@@ -46,7 +46,8 @@
 	<div id="PageWrapper" align="center">
 		<div id="PageContainer">
 			<div id="Header">
-				<a href="/admin/" class="loginLink button right {% if not user.is_authenticated %}loggedout{% endif %}">{% if user.is_authenticated %}Welcome, {{ user }}{% else %}Log In{% endif %}</a>
+				{% comment %}<a href="/admin/" class="loginLink button right {% if not user.is_authenticated %}loggedout{% endif %}">{% if user.is_authenticated %}Welcome, {{ user }}{% else %}Log In{% endif %}</a>{% endcomment %}
+				<a href="/admin/" class="loginLink button right {% if not user.is_authenticated %}loggedout{% endif %}">Log In</a>
 			</div>
 			<div id="Navigation">
 				<ul id="LeftNavigation">
@@ -83,36 +84,6 @@
 				<div class="clear"></div>
 				{% comment %}<div class="attribution">Partial funding for this project was provided by the Neighborhood Partners Program, administered by the City of Chattanooga Department of Neighborhood Services and Community Development.</div>{% endcomment %}
 			</div>
-		</div>
-	</div>
-	
-	<div class="hide">
-		<div id="LoginBox">
-			<div class="ModalContent roundtop">
-				<div class="Header">
-					Log in
-					<a href="#" class="Close"></a>
-				</div>
-				<form action="/admin/" method="post">
-					{% csrf_token %}
-					<div class="FieldName">Username</div>
-					<div class="FieldInput"><input name="username" value="" class="input"></div>
-					<div class="FieldName">Password</div>
-					<div class="FieldInput"><input type="password" name="password" value="" class="input"></div>
-					<div class="right"><input type="submit" value="Log In" class="button submit"></div>
-					<input type="hidden" value="1" name="this_is_the_login_form">
-					<input type="hidden" value="/admin/" name="next">
-				</form>
-				<div class="clear"></div>
-			</div>
-			{% comment %}
-			<div class="ModalContent roundbottom" style="margin-top:2px;">
-				<div class="Notify">Need a St-Elmo.org Account?</div>
-				<div align="center">
-					<a href="#" class="button submit">Register Here</a>
-				</div>
-			</div>
-			{% endcomment %}
 		</div>
 	</div>
 	

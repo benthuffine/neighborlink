@@ -1,3 +1,4 @@
+from django.views.generic.simple import direct_to_template
 from django.conf.urls.defaults import *
 from django.conf import settings
 
@@ -23,6 +24,7 @@ from neighborlink.apps.content.feeds import *
 urlpatterns += patterns('',
     (r'^news-and-events/feed/$', LatestNewsEventsFeed()),
     (r'^about/feed/$', LatestAboutPageFeed()),
+    (r'^login/$', direct_to_template, {'template': 'login.html'}),
 )
 
 urlpatterns += patterns('neighborlink.apps.entity.views',

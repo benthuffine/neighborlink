@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from filebrowser.sites import site
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -10,6 +11,7 @@ urlpatterns = patterns('',
     # (r'^nlink/', include('nlink.foo.urls')),
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/filebrowser/', include(site.urls)),
     (r'^admin/', include(admin.site.urls)),
     (r'^comments/', include('django.contrib.comments.urls')),
 )

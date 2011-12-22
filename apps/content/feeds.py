@@ -8,7 +8,7 @@ class LatestNewsEventsFeed(Feed):
     description = "Latest news and events for %s" % settings.SITE_NAME
 
     def items(self):
-        return NewsEvents.objects.order_by('-insert_date')[:5]
+        return NewsEvent.objects.order_by('-insert_date')[:5]
 
     def item_title(self, item):
         return item.title

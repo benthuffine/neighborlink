@@ -18,6 +18,9 @@ class LatestNewsEventsFeed(Feed):
     def item_description(self, item):
         return item.content
 
+    def item_pubdate(self, item):
+        return item.insert_date
+
 class LatestAboutPageFeed(Feed):
     title = "%s Articles" % settings.SITE_NAME
     link = "/about/"
@@ -31,3 +34,6 @@ class LatestAboutPageFeed(Feed):
 
     def item_description(self, item):
         return item.content
+
+    def item_pubdate(self, item):
+        return item.insert_date

@@ -2,6 +2,8 @@ from django.views.generic.simple import direct_to_template
 from django.conf.urls.defaults import *
 from django.conf import settings
 
+handler500 = 'neighborlink.apps.content.views.server_error'
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()

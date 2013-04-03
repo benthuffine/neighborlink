@@ -1,6 +1,6 @@
 from host_settings.st_elmo import *
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = True
 
 DATABASES = {
@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'neighborlink.apps.content',
     'neighborlink.apps.entity',
     'debug_toolbar',
+    'neighborlink.apps.stelmo',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -79,3 +80,10 @@ LOGGING = {
         }
     }
 }
+
+TWITTER_CONSUMER_KEY = 'PcpzJyP2ZAkAxUfrCY7TyA'
+TWITTER_CONSUMER_SECRET = 'KQVgW5iWlKKrlGx99zcZLIKQSnxCW9DYOl8SsyVktkM'
+TWITTER_ACCESS_TOKEN_KEY = '22872565-u7ag2gAeSUqWSgQ48Zu5fUxHAGcd9dq3xKwAKyOao'
+TWITTER_ACCESS_TOKEN_SECRET = '9JBEtAhcovXFAg5RXzKcmxmpqPLUKKP9qBtmLmnFa3c'
+
+

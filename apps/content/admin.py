@@ -2,7 +2,7 @@ from django.contrib import admin
 from neighborlink.apps.content.models import *
 
 def has_approval_permission(request, obj=None):
-     if request.user.has_perm('content.can_approve_post'):
+     if request.user.is_superuser or request.user.has_perm('content.can_approve_post'):
          return True
      return False
 

@@ -40,7 +40,7 @@ class PageAdmin(admin.ModelAdmin):
 
     def changelist_view(self, request, extra_context=None):
         if has_approval_permission(request):
-            self.list_display = ('action_checkbox', 'title', 'slug', 'approved', is_child, 'sort_order',)
+            self.list_display = ('title', 'slug', 'approved', is_child, 'sort_order',)
             self.list_display_links = ('title',)
             self.list_filter = ('approved', )
         else:

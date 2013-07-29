@@ -44,7 +44,7 @@ admin.site.register(Featured)
 class ChurchAdmin(EntityAdmin):
     def changelist_view(self, request, extra_context=None):
         if has_approval_permission(request):
-            self.list_display = ('action_checkbox', 'name', 'slug', 'denomination', 'featurable', 'approved', is_child,)
+            self.list_display = ('name', 'slug', 'denomination', 'featurable', 'approved', is_child,)
             self.list_display_links = ('name',)
             self.list_filter = ('denomination', 'featurable', 'approved')
         else:
@@ -182,7 +182,7 @@ admin.site.register(Church, ChurchAdmin)
 class ServiceAdmin(EntityAdmin):
     def changelist_view(self, request, extra_context=None):
         if has_approval_permission(request):
-            self.list_display = ('action_checkbox', 'name', 'slug', 'featurable', 'approved')
+            self.list_display = ('name', 'slug', 'featurable', 'approved')
             self.list_display_links = ('name',)
             self.list_filter = ('service_type', 'featurable', 'approved')
         else:
@@ -329,7 +329,7 @@ class BusinessAdmin(EntityAdmin):
 
     def changelist_view(self, request, extra_context=None):
         if has_approval_permission(request):
-            self.list_display = ('action_checkbox', 'name', 'slug', 'business_type', 'featurable', 'approved')
+            self.list_display = ('name', 'slug', 'business_type', 'featurable', 'approved')
             self.list_display_links = ('name',)
             self.list_filter = ('business_type', 'featurable', 'approved')
         else:

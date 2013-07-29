@@ -3,7 +3,7 @@ from neighborlink.apps.entity.models import *
 from django.views.decorators.csrf import csrf_protect
 
 def has_approval_permission(request, obj=None):
-     if request.user.has_perm('entity.can_approve_post'):
+     if request.user.is_superuser or request.user.has_perm('entity.can_approve_post'):
          return True
      return False
 
